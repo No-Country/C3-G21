@@ -1,0 +1,34 @@
+horario de trabajo 
+
+para miercoles y viernes:
+
+11:00 daylis, cada uno de los miembros dara in informe de sobre sus tareas asignadas
+
+14:00 - 17:00 - horario laboral y retro sobre el proyecto.
+
+Projecto owner: Agustina Bellone
+
+User stories:
+
+quiero: como empleador poder registarme en la plataforma
+
+quiero: como empleador poder registrar datos de la empresa
+
+quiero: como empleador poder crear ofertas laborales
+
+quiero: como empleador ver los perfiles de los postulantes y CV 
+
+quiero: como empleador pueda aprobar y rechazar a ciertos postulantes y enviarles mensajes peronalizados (abrir chat entre ambos y agendar la reunion, a investigar con google meet APi)
+
+quiero: como usuario quiero poder registrame (poder adjuntar cv)
+
+quiero: como usuario poder ver las ofertas laborales en la pagina de inicio
+
+quiero: como usuario quisiera poder postularme a ofertas laborales (Spring email, crear mail prinpal que se encarge de enviar mails a los postulantes y empleadores)
+
+quiero: como usuario recibir notificaciones y que pueda verlos en una ventanita en el nav
+
+backend: Adrian Spinosi y Lucio 
+frontend: Pao y Mariano
+Full Stack: Brian 
+UI/UX: Agustina (mas soporte en frontend)
