@@ -7,6 +7,58 @@ html {
     box-sizing: inherit;
 }
 
+/* Paola */
+.barra-navegacion {
+    /* background-color: yellow; */
+    flex-direction: row;
+}
+
+.barra-navegacion > img {
+    border: 2px solid #000;
+    margin-right: 2.5rem;
+    margin-left: 1rem;
+}
+
+#busqueda {
+    height: 15rem;
+    border: 1px solid #000;
+    border-radius: 5rem;
+    padding: 1.2rem;
+    display: inline;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+#busqueda > input, #busqueda > button {
+    border: none;
+    background-color: #FFFFFF;
+}
+
+#busqueda > input {
+    width: 40%;
+}
+
+#busqueda > button {
+    border: 3px solid #000;
+    width: 2rem;
+}
+
+#crear-cuenta > a {
+    text-decoration: none;
+    color: #000
+}
+
+#crear-cuenta {
+    display: inline;
+    border: 2px solid #000;
+}
+
+#lupa {
+    width: 3rem;
+    border: 2px solid blue;
+}
+
+
 /* Brian Styles */
 .container {
     width: 95%;
