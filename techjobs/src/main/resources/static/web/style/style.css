@@ -1,0 +1,19 @@
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+/* Brian Styles */
+.container {
+    width: 95%;
+}
+
+.container-main {
+    width: 80%;
+}
+
+/* end Brian Styles*/
