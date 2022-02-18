@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,26 @@
     <link rel="stylesheet" href="style/style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
-        </style>
+    </style>
     <title>TechJobs - Portal de empleo</title>
 </head>
+
 <body>
+    <!-- background -->
+    <div class="background">
+        <div class="back-flex">
+            <div class="div1"></div>
+            <div class="div2"></div>
+        </div>
+    </div>
 
     <!-- Barra de navegación, Paola -->
     <div class="container, barra-navegacion">
         <img src="images/Logo.svg" alt="logo" id="logo">
         <div id="busqueda">
             <input type="text" name="buscar" id="" placeholder="Buscar empleos o profesionales...">
-            <button type="submit"><img id="lupa" src="https://img.icons8.com/windows/50/000000/search--v2.png"/></button>
+            <button type="submit"><img id="lupa"
+                    src="https://img.icons8.com/windows/50/000000/search--v2.png" /></button>
         </div>
         <div id="crear-cuenta">
             <a href="#">Preguntas frecuentes</a>
@@ -26,9 +36,66 @@
     </div>
 
     <!-- end Barra de navegación -->
+    <div class="container m-a">
+        <div class="container-main m-a">
+            <div class="main-flex">
+                <div class="body">
+                    <h1>Te ayudamos a buscar el empleo o candidato ideal.</h1>
+                    <p>Somos una plataforma totalmente gratuita que cuenta con diferentes ofertas laborales para que te
+                        puedas
+                        postular en unos pocos minutos. Tu perfil va a ser visto por empleadores de grandes empresas que
+                        están
+                        buscando al próximo talento que se una a ellos. <span class="span">¡Tu futuro trabajo te está
+                            esperando!</span></p>
 
+                    <input class="btn-secondary" type="button" value="Crea tu cuenta">
 
-    <h1>Te ayudamos a buscar el empleo o candidato ideal.</h1>
-    <p>Somos una plataforma totalmente gratuita que cuenta con diferentes ofertas laborales para que te puedas postular en unos pocos minutos. Tu perfil va a ser visto por empleadores de grandes empresas que están buscando al próximo talento que se una a ellos. ¡Tu futuro trabajo te está esperando!</p>
+                    <div class="info flex flex-j-content-space-b">
+                        <div class="users">
+                            <h3 class="t-c">Profesionales</h3>
+                            <div class="sections flex flex-j-content-c flex-wrap">
+                                <div>Diseñador UI/UX</div>
+                                <div>Programador web</div>
+                                <div>Analista de sistemas</div>
+                                <div>Comunity manager</div>
+                                <div>DevOps</div>
+                                <div>Qa Tester</div>
+                            </div>
+                        </div>
+                        <div class="employeers">
+                            <h3 class="t-c">Empresas</h3>
+                            <div class="emp flex flex-j-content-c flex-wrap">
+                                <img src="./images/empresa (1).png" alt="Globant">
+                                <img src="./images/empresa (2).png" alt="Link">
+                                <img src="./images/empresa (3).png" alt="Accenture">
+                                <img src="./images/empresa (4).png" alt="Santander">
+                                <img src="./images/empresa (5).png" alt="Uala">
+                                <img src="./images/empresa (6).png" alt="Pedidos Ya">
+                                <img src="./images/empresa (7).png" alt="Plus">
+                                <img src="./images/empresa (8).png" alt="Load">
+                                <img src="./images/empresa (9).png" alt="Accenture">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-body">
+                        <form>
+                            <h2 class="t-c">Ingresá tu cuenta</h2>
+                            <div class="flex flex-dir-col">
+                                <input type="email" placeholder="Email">
+                                <input type="password" placeholder="Contraseña">
+                            </div>
+                            <div class="flex flex-dir-col">
+                                <input class="btn-main" type="submit" value="Ingresar">
+                                <a href="#">¿Olvidaste tu contraseña?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

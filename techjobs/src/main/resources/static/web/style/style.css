@@ -6,11 +6,22 @@ html {
 
 *, *::after, *::before {
     box-sizing: inherit;
+    outline: none;
+}
+
+body {
+    margin: 0;
+}
+
+:root {
+    --main-color: #3658cf;
+    --secondary-color: #e18748;
+    --background-secondary: #faeee7;
 }
 
 /* Paola */
 .barra-navegacion {
-    margin-top: 2rem;
+    padding-top: 2rem;
     display: flex;
     flex-direction: row;
 }
@@ -72,6 +83,179 @@ html {
 
 .container-main {
     width: 80%;
+}
+
+.main-flex {
+    display: flex;
+    align-items: center;
+}
+
+.background {
+    position: absolute;
+}
+
+.back-flex {
+    position: absolute;
+    display: flex;
+    z-index: -1;
+}
+
+.div1 {
+    width: 50vw;
+    height: 100vh;
+    z-index: -1;
+    box-shadow: 20px 0px 40px 20px white;
+}
+
+.div2 {
+    width: 50vw;
+    height: 100vh;
+    z-index: -2;
+    background-image: url("../images/Imagen.png");
+    background-size: cover;
+}
+
+.body {
+    width: 50%;
+    margin-top: 2rem;
+}
+
+.body h1 {
+    font-size: 4rem;
+    margin-top: 10rem;
+}
+
+.body p {
+    font-size: 2rem;
+    margin-top: 5rem;
+}
+
+.form {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-body {
+    width: 80%;
+    padding: 5rem 0;
+    margin: 20rem 0 0 30rem;
+    border-radius: .8rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.form-body input[type="email"], input[type="password"] {
+    margin: 3rem 0;
+    padding: 1rem;
+    border-radius: .8rem;
+    border: 1px solid rgb(201, 201, 201);
+    transition: all .5s ease;
+}
+
+.form-body input[type="submit"] {
+    margin: 2rem 0;
+}
+
+.btn-main {
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 1.6rem;
+    padding: 1rem 0;
+    color: white;
+}
+
+.btn-secondary {
+    margin-top: 2rem;
+    border: 1px solid var(--main-color);
+    border-radius: 1.6rem;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--main-color);
+}
+
+.info {
+    margin-top: 5rem;
+}
+
+.info h3 {
+    font-size: 2rem;
+}
+
+.users {
+    width: 50%;
+    height: 200px;
+}
+
+.sections  div {
+    width: 30%;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 1rem .5rem;
+    padding: 2rem 0;
+    font-size: 1.3rem;
+    text-align: center;
+    background-color: var(--background-secondary);
+    color: var(--secondary-color);
+}
+
+
+.employeers {
+    width: 50%;
+    height: 200px;
+}
+
+.emp  img {
+    width: 17%;
+    height: 9rem;
+    margin: 1rem .5rem;
+    padding: 2rem 0;
+}
+
+.form-body a {
+font-size: 1.5rem;
+}
+
+/* general styles */
+
+.span {
+    font-weight: bold;
+}
+
+.m-a {
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-dir-col {
+    flex-direction: column;
+}
+
+.flex-a-items-c {
+    align-items: center;
+}
+
+.flex-j-content-c {
+    justify-content: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-j-content-space-b {
+    justify-content: space-between;
+}
+
+.t-c {
+    text-align: center;
 }
 
 /* end Brian Styles*/
