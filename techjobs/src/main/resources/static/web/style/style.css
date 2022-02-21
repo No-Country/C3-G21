@@ -76,6 +76,11 @@ body {
     margin-left: 2rem;
 }
 
+#crear-cuenta > a:hover {
+    color: var(--secondary-color);
+    border-bottom: var(--secondary-color) solid 1px;
+}
+
 /* Brian Styles */
 .container {
     width: 95%;
