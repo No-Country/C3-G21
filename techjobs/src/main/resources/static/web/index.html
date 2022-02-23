@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" href="images/briefcase-solid.svg">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
-    </style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    </style> 
     <title>TechJobs - Portal de empleo</title>
 </head>
 
@@ -99,55 +99,165 @@
     </div>
 
     <!--  -->
-    <div>
+    <!-- <div>
         <h3>¿Qué estás buscando?</h3>
-        <a href="#">Profesionales</a> <!-- esto lleva a registrarse o iniciar usuario?-->
+        <a href="#">Profesionales</a>
         <a href="#">Empresas</a>
-    </div>
-    <div>
+    </div> -->
+
+    <!-- Puestos hardcoded -->
+    <div id="puestos">
         <h2>Puestos que te pueden interesar...</h2>
-        <div class="card-empresas">
-            <img src="images/Empresa (6).png" alt="logo-pedidos-ya">
-            <h3>PEDIDOS YA</h3>
-            <h4>Software Engineer Backend</h4>
-            <p>PedidosYa es la empresa de tecnología líder en delivery y quick commerce presente en 15 países de América Latina. Nuestro objetivo es brindar experiencias únicas a nuestros clie...</p>
-            <p class="tags">ARGENTINA</p>
-            <p class="tags">REMOTO</p>
-            <p class="tags">FULL TIME</p>
-            <p class="tags">SENIOR</p>
-        </div>
-        <div class="card-empresas">
-            <img src="images/Empresa (7).png" alt="logo-huli">
-            <h3>HULI</h3>
-            <h4>Ingeniero de Software Frontend</h4>
-            <p>Huli es uno de los startup de mayor crecimiento en Costa Rica, nos dedicamos a crear soluciones que conectan pacientes y proveedores de salud. Con oficinas en Costa Rica y...</p>
-            <p class="tags">COSTA RICA</p>
-            <p class="tags">HIBRIDO</p>
-            <p class="tags">FULL TIME</p>
-            <p class="tags">SEMI-SENIOR</p>
-        </div>
-        <div class="card-empresas">
-            <img src="images/Empresa (9).png" alt="logo-accenture">
-            <h3>ACCENTURE</h3>
-            <h4>Asistente de Recursos Humanos</h4>
-            <p>Sumate a nuestra unidad de Accenture Operations donde podrás conectar las capacidades necesarias para sobresalir en un mundo digital y proporcionar innovación contínua...</p>
-            <p class="tags">ARGENTINA</p>
-            <p class="tags">PRESENCIAL</p>
-            <p class="tags">FULL TIME</p>
-            <p class="tags">JUNIOR</p>
-        </div>
-        <div class="card-empresas">
-            <img src="images/Empresa (8).png" alt="logo-invgate">
-            <h3>INVGATE</h3>
-            <h4>DevOps Engineer</h4>
-            <p>En InvGate desarrollamos productos para optimizar la prestación de servicios de IT, diseñando features intuitivas y fáciles de usar. Estamos presentes en más de 50 países en los...</p>
-            <p class="tags">ARGENTINA</p>
-            <p class="tags">REMOTO</p>
-            <p class="tags">FULL TIME</p>
-            <p class="tags">SENIOR</p>
+        <div id="cards">
+            <div class="card-puestos pedidosya">
+                <div class="card-header">
+                    <img src="images/Empresa (6).png" alt="logo-pedidos-ya">
+                    <div class="card-header-title">
+                        <h3>PEDIDOS YA</h3>
+                        <h4>Software Engineer Backend</h4>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>PedidosYa es la empresa de tecnología líder en delivery y quick commerce presente en 15 países de América Latina. Nuestro objetivo es brindar experiencias únicas a nuestros clie...</p>
+                </div>
+                <div class="tags">
+                    <p>ARGENTINA</p>
+                    <p>REMOTO</p>
+                    <p>FULL TIME</p>
+                    <p>SENIOR</p>
+                </div>
+            </div>
+            <div class="card-puestos huli">
+                <div class="card-header">
+                    <img src="images/Empresa (7).png" alt="logo-huli">
+                    <div class="card-header-title">
+                        <h3>HULI</h3>
+                        <h4>Ingeniero de Software Frontend</h4>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>Huli es uno de los startup de mayor crecimiento en Costa Rica, nos dedicamos a crear soluciones que conectan pacientes y proveedores de salud. Con oficinas en Costa Rica y...</p>
+                </div>
+                <div class="tags">
+                    <p>COSTA RICA</p>
+                    <p>HIBRIDO</p>
+                    <p>FULL TIME</p>
+                    <p>SEMI-SENIOR</p>
+                </div>
+            </div>
+            <div class="card-puestos accenture">
+                <div class="card-header">
+                    <img src="images/Empresa (9).png" alt="logo-accenture">
+                    <div class="card-header-title">
+                        <h3>ACCENTURE</h3>
+                        <h4>Asistente de Recursos Humanos</h4>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>Sumate a nuestra unidad de Accenture Operations donde podrás conectar las capacidades necesarias para sobresalir en un mundo digital y proporcionar innovación contínua...</p>
+                </div>
+                <div class="tags">
+                    <p>ARGENTINA</p>
+                    <p>PRESENCIAL</p>
+                    <p>FULL TIME</p>
+                    <p>JUNIOR</p>
+                </div>
+            </div>
+            <div class="card-puestos invgate">
+                <div class="card-header">
+                    <img src="images/Empresa (8).png" alt="logo-invgate">
+                    <div class="card-header-title">
+                        <h3>INVGATE</h3>
+                        <h4>DevOps Engineer</h4>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>En InvGate desarrollamos productos para optimizar la prestación de servicios de IT, diseñando features intuitivas y fáciles de usar. Estamos presentes en más de 50 países en los...</p>
+                </div>
+                <div class="tags">
+                    <p>ARGENTINA</p>
+                    <p>REMOTO</p>
+                    <p>FULL TIME</p>
+                    <p>SENIOR</p>
+                </div>
+            </div>
+            <div class="card-puestos accenture card3">
+                <div class="card-header">
+                    <img src="images/Empresa (9).png" alt="logo-accenture">
+                    <div class="card-header-title">
+                        <h3>ACCENTURE</h3>
+                        <h4>Asistente de Recursos Humanos</h4>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>Sumate a nuestra unidad de Accenture Operations donde podrás conectar las capacidades necesarias para sobresalir en un mundo digital y proporcionar innovación contínua...</p>
+                </div>
+                <div class="tags">
+                    <p>ARGENTINA</p>
+                    <p>PRESENCIAL</p>
+                    <p>FULL TIME</p>
+                    <p>JUNIOR</p>
+                </div>
+            </div>
+            <div class="card-puestos invgate">
+                <div class="card-header">
+                    <img src="images/Empresa (8).png" alt="logo-invgate">
+                    <div class="card-header-title">
+                        <h3>INVGATE</h3>
+                        <h4>DevOps Engineer</h4>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>En InvGate desarrollamos productos para optimizar la prestación de servicios de IT, diseñando features intuitivas y fáciles de usar. Estamos presentes en más de 50 países en los...</p>
+                </div>
+                <div class="tags">
+                    <p>ARGENTINA</p>
+                    <p>REMOTO</p>
+                    <p>FULL TIME</p>
+                    <p>SENIOR</p>
+                </div>
+            </div>
+            <div class="card-puestos pedidosya card2">
+                <div class="card-header">
+                    <img src="images/Empresa (6).png" alt="logo-pedidos-ya">
+                    <div class="card-header-title">
+                        <h3>PEDIDOS YA</h3>
+                        <h4>Software Engineer Backend</h4>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>PedidosYa es la empresa de tecnología líder en delivery y quick commerce presente en 15 países de América Latina. Nuestro objetivo es brindar experiencias únicas a nuestros clie...</p>
+                </div>
+                <div class="tags">
+                    <p>ARGENTINA</p>
+                    <p>REMOTO</p>
+                    <p>FULL TIME</p>
+                    <p>SENIOR</p>
+                </div>
+            </div>
+            <div class="card-puestos huli">
+                <div class="card-header">
+                    <img src="images/Empresa (7).png" alt="logo-huli">
+                    <div class="card-header-title">
+                        <h3>HULI</h3>
+                        <h4>Ingeniero de Software Frontend</h4>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>Huli es uno de los startup de mayor crecimiento en Costa Rica, nos dedicamos a crear soluciones que conectan pacientes y proveedores de salud. Con oficinas en Costa Rica y...</p>
+                </div>
+                <div class="tags">
+                    <p>COSTA RICA</p>
+                    <p>HIBRIDO</p>
+                    <p>FULL TIME</p>
+                    <p>SEMI-SENIOR</p>
+                </div>
+            </div>
         </div>
         <a href="#">Ver más</a>
     </div>
+
+    <!-- Perfiles -->
     <div>
         <h2>Casos de éxito</h2>
         <div class="card-casos-exito">
@@ -176,6 +286,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div id="creador">
             <p>Copyright © 2022 - TECH JOBS<p>
