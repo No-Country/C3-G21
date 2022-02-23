@@ -17,9 +17,11 @@ body {
     --main-color: #3658cf;
     --secondary-color: #e18748;
     --background-secondary: #faeee7;
+    --background-black: #151415;
 }
 
 /* Paola */
+/* Nav */
 .barra-navegacion {
     padding-top: 2rem;
     display: flex;
@@ -36,22 +38,22 @@ body {
     margin-top: 0.5rem;
     height: 3.5rem;
     width: 40%;
-    border: 1px solid #000;
+    border: 1px solid var(--background-black);
     border-radius: 5rem;
     display: flex;
 }
 
-#busqueda > input, #busqueda > button {
+#busqueda input, #busqueda button {
     border: none;
     background-color: #FFF;
 }
 
-#busqueda > input {
+#busqueda input {
     margin: 0.1rem 1rem;
     width: 90%;
 }
 
-#busqueda > button {
+#busqueda button {
     margin: 0.1rem 1rem;
     width: 3rem;
     margin-left: auto;
@@ -67,19 +69,60 @@ body {
     margin-left: auto;
 }
 
-#crear-cuenta > a {
+#crear-cuenta a {
     margin: 1.3rem 0rem;
     font-weight: bold;
     font-size: small;
     text-decoration: none;
-    color: #000;
+    color: var(--background-black);
     margin-left: 2rem;
 }
 
-#crear-cuenta > a:hover {
+#crear-cuenta a:hover {
     color: var(--secondary-color);
     border-bottom: var(--secondary-color) solid 1px;
 }
+
+/* Footer */
+
+footer {
+    background-color: var(--background-black);
+    display: flex;
+    margin-top: 3rem;
+}
+
+#creador {
+    width: 55%;
+    margin: 1.5rem 0rem;
+    /* background-color: blueviolet; */
+    margin-left: 45%;
+    
+}
+
+#creador p {
+    color: var(--background-secondary);
+    font-size: medium;
+    font-weight: bold;
+}
+
+#redes-sociales {
+    width: 45%;
+    display: flex;
+    margin-right: 1.5rem;
+    margin-left: auto;
+}
+
+#linkedin {
+    margin-left: auto;
+}
+
+#redes-sociales img {
+    margin: 2.8rem 2rem;
+    width: 2.3rem;
+    filter: invert(100%);
+}
+
+
 
 /* Brian Styles */
 .container {
