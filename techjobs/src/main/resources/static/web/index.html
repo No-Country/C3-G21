@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="images/briefcase-solid.svg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
     </style>
@@ -23,7 +24,7 @@
 
     <!-- Barra de navegación, Paola -->
     <div class="container, barra-navegacion">
-        <img src="images/Logo.svg" alt="logo" id="logo">
+        <a href="index.html"><img src="images/Logo.svg" alt="logo" id="logo"></a>
         <div id="busqueda">
             <input type="text" name="buscar" id="" placeholder="Buscar empleos o profesionales...">
             <button type="submit"><img id="lupa"
@@ -31,7 +32,7 @@
         </div>
         <div id="crear-cuenta">
             <a href="#">Preguntas frecuentes</a>
-            <a href="#">Crear cuenta</a>
+            <a href="register.html">Crear cuenta</a>
         </div>
     </div>
 
@@ -48,7 +49,7 @@
                         buscando al próximo talento que se una a ellos. <span class="span">¡Tu futuro trabajo te está
                             esperando!</span></p>
 
-                    <input class="btn-secondary" type="button" value="Crea tu cuenta">
+                    <a href="register.html" class="btn-secondary">Crea tu cuenta</a> <!-- p: lo hice <a> para que lleve al registro -->
 
                     <div class="info flex flex-j-content-space-b">
                         <div class="users">
@@ -176,12 +177,14 @@
     </div>
 
     <footer>
-        <div class="creador">Copyright © 2022 - TECH JOBS</div>
-        <div class="redes-sociales">
-            <a href="#"><img src="images/linkedin-brands.svg" alt="linkedin"></a>
-            <a href="#"><img src="images/twitter-square-brands.svg" alt="twitter"></a>
-            <a href="#"><img src="images/facebook-square-brands.svg" alt="facebook"></a>
-            <a href="#"><img src="images/instagram-brands.svg" alt="instagram"></a>
+        <div id="creador">
+            <p>Copyright © 2022 - TECH JOBS<p>
+        </div>
+        <div id="redes-sociales">
+                <a href="#" id="linkedin"><img src="images/linkedin-brands.svg" alt="linkedin"></a>
+                <a href="#"><img src="images/twitter-square-brands.svg" alt="twitter"></a>
+                <a href="#"><img src="images/facebook-square-brands.svg" alt="facebook"></a>
+                <a href="#"><img src="images/instagram-brands.svg" alt="instagram"></a>
         </div>
     </footer>
 

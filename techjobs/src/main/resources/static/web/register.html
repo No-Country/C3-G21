@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="images/briefcase-solid.svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+    </style>
+    <title>Registrarse - TechJobs</title>
+</head>
+<body>
+    <!-- Barra de navegación, Paola -->
+    <div class="container, barra-navegacion">
+        <a href="index.html"><img src="images/Logo.svg" alt="logo" id="logo"></a>
+        <div id="busqueda">
+            <input type="text" name="buscar" id="" placeholder="Buscar empleos o profesionales...">
+            <button type="submit"><img id="lupa"
+                    src="https://img.icons8.com/windows/50/000000/search--v2.png" /></button>
+        </div>
+        <div id="crear-cuenta">
+            <a href="#">Preguntas frecuentes</a>
+            <a href="index.html">Iniciar Sesión</a>
+        </div>
+    </div>
+    <!-- end Barra de navegación -->
+
+    <div class="container m-a">
+        <div class="container-main m-a">
+            <div class="main-flex">
+                <div class="body">
+                    <h1>Que bueno que quieras unirte a nosotros.</h1>
+                    <p>Por el momento necesitamos los siguientes datos básicos. Más adelante podrás completar tu perfil agregando contenido como tus conocimientos y tu experiencia laboral.</p>
+                </div>
+
+                <div class="form">
+                    <div class="form-body">
+                        <form>
+                            <div class="flex flex-dir-col">
+                                <input type="text" name="name" placeholder="Nombre/s">
+<input type="text" name="lastname" placeholder="Apellido/s">
+<input type="date" name="birth-date" placeholder="Fecha de nacimiento">
+<input type="text" name="id" placeholder="DNI">
+<input type="email" name="email" placeholder="Email">
+<input type="tel" name="phone" placeholder="Teléfono">
+<input type="text" name="nationality" placeholder="Nacionalidad">
+<select name="nationality">
+    <option value="Argentina" id="AR">Argentina</option>
+    <option value="Bolivia" id="BO">Bolivia</option>
+    <option value="Brasil" id="BR">Brasil</option>
+    <option value="Chile" id="CL">Chile</option>
+    <option value="Paraguay" id="PY">Paraguay</option>
+    <option value="Uruguay" id="UY">Uruguay</option>
+</select>
+
+<input type="text" name="province" placeholder="Provincia">
+<select name="province">
+    <option value="1">Agregar prov con JS</option>
+</select>
+<input type="text" name="city" placeholder="Localidad">
+<select name="ciy">
+    <option value="1">Agregar ciudades con JS</option>
+</select>
+<p>¿Con cuál te identificás?</p>
+<label for="user">Busco empleo</label>
+<input type="radio" id="user" name="user-type" value="user">
+<label for="company">Soy empleador</label>
+<input type="radio" id="company" name="user-type" value="company">
+
+<input type="password" name="password" placeholder="Contraseña">
+<input type="password" name="repeat-password" placeholder="Confirmar contraseña">
+
+
+                            </div>
+                            <div class="flex flex-dir-col">
+                                <input class="btn-main" type="submit" value="Crear cuenta">
+                                <a href="index.html">Volver</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <footer>
+        <div class="creador">Copyright © 2022 - TECH JOBS</div>
+        <div class="redes-sociales">
+            <a href="#"><img src="images/linkedin-brands.svg" alt="linkedin"></a>
+            <a href="#"><img src="images/twitter-square-brands.svg" alt="twitter"></a>
+            <a href="#"><img src="images/facebook-square-brands.svg" alt="facebook"></a>
+            <a href="#"><img src="images/instagram-brands.svg" alt="instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>
