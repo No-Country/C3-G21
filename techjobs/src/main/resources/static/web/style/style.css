@@ -75,7 +75,148 @@ body {
     color: #000;
     margin-left: 2rem;
 }
+/* Joel Styles */
+/* Cards empresas */
+/* 
+pedidosya: #fef4f5
+    - hover: #f72d45
+huli: #f4f5f9
+    - hover #254578
+accenture: #faf2ff
+    - hover: #a917fe
+invgate: #f5f5f5
+    - hover: #383433
+    tags: letra:#cb7e48, cuadro:#fbeee6
+*/
 
+#puestos {
+    margin-top: 30rem;
+}
+
+#puestos > h2 {
+    width: 90%;
+    margin: 0 4rem;
+    font-size: 2.8rem;
+}
+
+#cards {
+    display: flex;flex-wrap: wrap;
+    margin-top: 6rem;
+}
+
+.card-puestos {
+    width: 23%;
+    margin: 1rem;
+    border-radius: 0.7rem;
+}
+
+.card-header {
+    margin: 0 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card-header img {
+    width: 35%;
+    height: auto;
+    margin-right: auto;
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+}
+
+.card-header-title {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 5% 0 ;
+    margin: 2.5rem 0;
+    margin-right: auto;
+}
+
+.card-header-title h3 {
+    width: auto;
+    margin: 0 5%;
+    margin-bottom: 0.5rem;
+
+}
+
+.card-header-title h4 {
+    margin: 0 5%;
+    font-weight: 400;
+}
+
+.card-description p {
+    padding-top: 0;
+    /* border: #151415 solid; */
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0rem 7rem;
+}
+
+.pedidosya {
+    background-color: #fef4f5;
+    margin-left: 4rem;
+}
+
+.pedidosya:hover {
+    background-color: #f72d45;
+    color: var(--background-secondary);
+}
+
+.card2 {
+    margin-left: 1rem;
+}
+
+.huli {
+    background-color: #f4f5f9;
+}
+
+.huli:hover {
+    background-color: #254578;
+    color: var(--background-secondary)
+}
+
+.accenture {
+    background-color: #faf2ff;
+}
+
+.accenture:hover {
+    background-color: #a917fe;
+    color: var(--background-secondary);
+}
+
+.card3 {
+    margin-left: 4rem;
+}
+
+.invgate {
+    background-color: #f5f5f5;
+}
+
+.invgate:hover {
+    background-color: #383433;
+    color: var(--background-secondary);
+}
+
+.tags {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    /* border: #151415 solid; */
+}
+
+.tags p {
+    border-radius: 0.3rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: #fbeee6;
+    color: #cb7e48;
+}
+
+
+
+/* Joel end */
 /* Brian Styles */
 .container {
     width: 95%;
