@@ -8,8 +8,7 @@ Pre-requisitos 📋
 Instalación 🔧
  
  Construido con 🛠️
- 
- Dropwizard - El framework web usado 
+
    FIGMA
    HTML
    CSS
