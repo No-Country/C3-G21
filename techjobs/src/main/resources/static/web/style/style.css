@@ -31,7 +31,7 @@ body {
 
 #logo {
     margin-right: 3rem;
-    margin-left: 1.5rem;
+    margin-left: 4rem;
     width: 6rem;
 }
 
@@ -66,7 +66,7 @@ body {
 
 #crear-cuenta {
     display: flex;
-    margin-right: 1.5rem;
+    margin-right: 4rem;
     margin-left: auto;
 }
 
@@ -86,6 +86,7 @@ body {
 
 /* Cards empresas */
 /* 
+colores
 pedidosya: #fef4f5
     - hover: #f72d45
 huli: #f4f5f9
@@ -98,34 +99,43 @@ invgate: #f5f5f5
     tags: letra:#cb7e48, cuadro:#fbeee6
 */
 
-#puestos {
+#empleos {
     margin-top: 30rem;
 }
 
-#puestos > h2 {
+#empleos > h2 {
     width: 90%;
     margin: 0 4rem;
     font-size: 2.8rem;
 }
 
-#cards {
-    display: flex;flex-wrap: wrap;
-    margin-top: 6rem;
+#empleos a {
+    font-size: large;
+    text-decoration: none;
+    color: var(--background-black);
+    margin-left: 90%;
 }
 
-.card-puestos {
+#cards-empleos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+}
+
+.card-empleos {
     width: 23%;
     margin: 1rem;
     border-radius: 0.7rem;
 }
 
-.card-header {
+.card-header-empleos {
     margin: 0 1rem;
     display: flex;
     justify-content: center;
 }
 
-.card-header img {
+.card-header-empleos img {
     width: 35%;
     height: auto;
     margin-right: auto;
@@ -147,7 +157,6 @@ invgate: #f5f5f5
     width: auto;
     margin: 0 5%;
     margin-bottom: 0.5rem;
-
 }
 
 .card-header-title h4 {
@@ -157,7 +166,6 @@ invgate: #f5f5f5
 
 .card-description p {
     padding-top: 0;
-    /* border: #151415 solid; */
     text-align: center;
     font-size: 1.5rem;
     margin: 0rem 7rem;
@@ -166,6 +174,7 @@ invgate: #f5f5f5
 .pedidosya {
     background-color: #fef4f5;
     margin-left: 4rem;
+    transition: 0.6s;
 }
 
 .pedidosya:hover {
@@ -179,6 +188,7 @@ invgate: #f5f5f5
 
 .huli {
     background-color: #f4f5f9;
+    transition: 0.6s;
 }
 
 .huli:hover {
@@ -188,6 +198,7 @@ invgate: #f5f5f5
 
 .accenture {
     background-color: #faf2ff;
+    transition: 0.6s;
 }
 
 .accenture:hover {
@@ -201,6 +212,7 @@ invgate: #f5f5f5
 
 .invgate {
     background-color: #f5f5f5;
+    transition: 0.6s;
 }
 
 .invgate:hover {
@@ -212,7 +224,6 @@ invgate: #f5f5f5
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    /* border: #151415 solid; */
 }
 
 .tags p {
@@ -223,6 +234,66 @@ invgate: #f5f5f5
     color: #cb7e48;
 }
 
+/* Perfiles */
+
+#perfiles > h2 {
+    width: 90%;
+    margin: 0 4rem;
+    font-size: 2.8rem;
+}
+
+#cards-perfiles {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 4rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.card-casos-exito {
+    border: var(--background-secondary) solid 2px;
+    width: 23.9%;
+    margin: 1rem;
+    border-radius: 0.7rem;
+    padding-bottom: 1rem;
+}
+
+.card-header-perfiles {
+    margin: 0 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card-header-perfiles h3 {
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem;
+    margin: 2.5rem 0;
+}
+
+.card-header-perfiles img {
+    width: 17rem;
+    height: auto;
+    padding-top: 1.5rem;
+    padding-right: 5rem;
+    padding-bottom: 1rem;
+}
+
+.card-description-perfiles {
+    padding-top: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0rem 3rem;
+    margin-bottom: 3rem;
+}
+
+.card-casos-exito a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--background-black);
+    margin: 0 30%;
+    font-weight: bold;
+}
 
 /* Footer */
 footer {
