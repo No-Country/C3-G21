@@ -8,12 +8,12 @@ Pre-requisitos 📋
 Instalación 🔧
  
  Construido con 🛠️
-   FIGMA
-   HTML
-   CSS
-   JAVASCRIPT
-   JAVA
-   SPRING
-   MAVEN
+   -FIGMA
+   -HTML
+   -CSS
+   -JAVASCRIPT
+   -JAVA
+   -SPRING
+   -MAVEN
    
 Autores ✒️
