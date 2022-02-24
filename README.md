@@ -3,11 +3,11 @@
 Sitio web totalmente gratuito con el objetivo  de que una persona pueda encontrar distintas ofertas laborales y postularse en algunas de ellas en pocos minutos. 
 Además no solo las personas podrán buscar su empleo sino que las empresas podrán también buscar su candidato ideal.
 
--Pre-requisitos 📋
+Pre-requisitos 📋
 
-- Instalación 🔧
-- 
-- Construido con 🛠️
+Instalación 🔧
+ 
+ Construido con 🛠️
    FIGMA
    HTML
    CSS
@@ -16,4 +16,4 @@ Además no solo las personas podrán buscar su empleo sino que las empresas podr
    SPRING
    MAVEN
    
--Autores ✒️
+Autores ✒️
