@@ -1,0 +1,64 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %} Registrarse - TechJobs {% endblock %}
+
+{% block content %}
+    <!-- Barra de navegación, Paola -->
+    <div class="container, barra-navegacion">
+        <a href="{% url 'home:index' %}"><img src="{% static '../static/user/images/Logo.svg' %}" alt="logo" id="logo"></a>
+        <div id="busqueda">
+            <input type="text" name="buscar" id="" placeholder="Buscar empleos o profesionales...">
+            <button type="submit"><img id="lupa"
+                    src="https://img.icons8.com/windows/50/000000/search--v2.png" /></button>
+        </div>
+        <div id="crear-cuenta">
+            <a href="{% url 'home:faq' %}">Preguntas frecuentes</a>
+            <a href="{% url 'home:index' %}">Iniciar Sesión</a>
+        </div>
+    </div>
+    <!-- end Barra de navegación -->
+
+            <!-- Mensajes -->
+            {% if messages %}
+            {% for message in messages %}
+                <div>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    <div class="container m-a">
+        <div class="container-main m-a">
+            <div class="main-flex">
+                <div class="body">
+                    <h1>Que bueno que quieras unirte a nosotros!</h1>
+                    <p>Por el momento necesitamos los siguientes datos básicos. Más adelante podrás completar tu perfil agregando tus conocimientos y tu experiencia laboral.</p>
+                </div>
+
+                <!-- Form de registro -->
+                <div class="form">
+                    <div class="form-body">
+                        <form action="" method="post" >
+                            {% csrf_token %}
+                            <div class="flex flex-dir-col">
+                                <p>¿Con cuál te identificás?</p>
+                                <label for="user">Busco empleo</label>
+                                <input type="radio" id="user" name="user-type" value="user">
+                                <label for="company">Soy empleador</label>
+                                <input type="radio" id="company" name="user-type" value="company">
+
+                                {{ form.as_p }}
+
+                            </div>
+                            <div class="flex flex-dir-col">
+                                <button class="btn-main" type="submit">Crear cuenta</button>
+                                <a href="{% url 'home:index' %}">Volver</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

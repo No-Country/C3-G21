@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %} Preguntas frecuentes - TechJobs {% endblock %}
+
+{% block content %}
+<!-- Barra de navegación -->
+<div class="container, barra-navegacion">
+    <a href="{% url 'home:index' %}"><img src="{% static '../static/home/images/Logo.svg' %}" alt="logo" id="logo"></a>
+    <div id="busqueda">
+        <input type="text" name="buscar" id="" placeholder="Buscar empleos o profesionales...">
+        <button type="submit"><img id="lupa"
+                src="https://img.icons8.com/windows/50/000000/search--v2.png" /></button>
+    </div>
+    <div id="crear-cuenta">
+        <a href="{% url 'home:index' %}">Home</a>
+        <a href="{% url 'user:register' %}">Crear cuenta</a>
+    </div>
+</div>
+
+<!-- end Barra de navegación -->
+
+{% comment %} TODO: agregar preguntas frecuentes {% endcomment %}
+
+{% endblock %}
