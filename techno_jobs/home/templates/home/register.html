@@ -5,7 +5,7 @@
 {% block content %}
     <!-- Barra de navegación, Paola -->
     <div class="container, barra-navegacion">
-        <a href="{% url 'home:index' %}"><img src="{% static '../static/user/images/Logo.svg' %}" alt="logo" id="logo"></a>
+        <a href="{% url 'home:index' %}"><img src="{% static '../static/home/images/Logo.svg' %}" alt="logo" id="logo"></a>
         <div id="busqueda">
             <input type="text" name="buscar" id="" placeholder="Buscar empleos o profesionales...">
             <button type="submit"><img id="lupa"
@@ -13,7 +13,7 @@
         </div>
         <div id="crear-cuenta">
             <a href="{% url 'home:faq' %}">Preguntas frecuentes</a>
-            <a href="{% url 'home:index' %}">Iniciar Sesión</a>
+            <a href="{% url 'home:login' %}">Iniciar Sesión</a>
         </div>
     </div>
     <!-- end Barra de navegación -->
@@ -42,10 +42,10 @@
                             {% csrf_token %}
                             <div class="flex flex-dir-col">
                                 <p>¿Con cuál te identificás?</p>
-                                <label for="user">Busco empleo</label>
-                                <input type="radio" id="user" name="user-type" value="user">
+                                <label for="home">Busco empleo</label>
+                                <input type="radio" id="home" name="home-type" value="home">
                                 <label for="company">Soy empleador</label>
-                                <input type="radio" id="company" name="user-type" value="company">
+                                <input type="radio" id="company" name="home-type" value="company">
 
                                 {{ form.as_p }}
 
