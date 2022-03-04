@@ -1,0 +1,87 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %} Registrarse - TechJobs {% endblock %}
+
+{% block content %}
+<!-- background -->
+<div class="background">
+    <div class="back-flex">
+        <div class="div1"></div>
+        <div class="div2"></div>
+    </div>
+</div>
+<!-- Barra de navegación -->
+<div class="container, barra-navegacion">
+    <a href="{% url 'home:index' %}"><img src="{% static '../static/home/images/Logo.svg' %}" alt="logo" id="logo"></a>
+    <div id="busqueda">
+        <input type="text" name="buscar" id="" placeholder="Buscar empleos o profesionales...">
+        <button type="submit"><img id="lupa"
+                src="https://img.icons8.com/windows/50/000000/search--v2.png" /></button>
+    </div>
+    <div id="crear-cuenta">
+        <a href="{% url 'home:faq' %}">Preguntas frecuentes</a>
+        {% if user.is_authenticated %}
+        {% comment %} # FIXME: arreglar CSS y funcionalidad
+        # TODO: toastr {% endcomment %}
+        <p>Bienvenido {{user.username}} </p>
+        {% comment %} FIXME: linkear a la view {% endcomment %}
+        <a href="{% url 'home:logout' %}">Cerrar sesión</a>
+        {% else %}
+        <a href="{% url 'home:register' %}">Crear cuenta</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- end Barra de navegación -->
+
+<div class="container m-a">
+    <div class="container-main m-a">
+        <div class="main-flex">
+            <div class="body">
+                <h1>Te ayudamos a buscar el empleo o candidato ideal.</h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est minus reiciendis harum, eveniet, ab omnis esse libero, aliquid maiores veritatis neque inventore et officia suscipit corporis quia mollitia culpa natus!
+                Porro quos illo dolores velit accusantium consequatur ullam voluptatum aliquid quo odio a, nemo cumque iusto! Et repudiandae molestiae quaerat, commodi blanditiis a, quam maiores vero aut odio soluta laudantium.
+                Libero vero placeat reiciendis non inventore veniam aut qui accusamus voluptas. Quidem cupiditate recusandae iste quia quam molestias, a ab nemo nostrum repellat magnam quos obcaecati quae laudantium ipsum veniam!</p>
+                        
+                        <a href="{% url 'home:register' %}" class="btn-secondary">Crea tu cuenta</a>
+                        
+                        <div class="info flex flex-j-content-space-b">
+                            <div class="users">
+                                <div class="sections flex flex-j-content-c flex-wrap">
+                                    <!-- <div>Diseñador UI/UX</div>
+                            <div>Programador web</div>
+                            <div>Analista de sistemas</div>
+                            <div>Comunity manager</div>
+                            <div>DevOps</div>
+                            <div>Qa Tester</div> -->
+                        </div>
+                    </div>
+                    <div class="employeers">
+                        <div class="emp flex flex-j-content-c flex-wrap">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="form">
+                    <div class="form-body">
+                        <form class="" method="post">
+                            <h2 class="t-c">Ingresá a tu cuenta</h2>
+                            <div class="flex flex-dir-col">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                </div>
+                                <div class="flex flex-dir-col">
+                                    <button class="btn-main" type="submit">Ingresar</button>
+                                    {% comment %} FIXME: CSS en el link, agregar la clase a los links del nav y modificar en todas las pages {% endcomment %}
+                                    <a href="#" class="">¿Olvidaste tu contraseña?</a>
+                                </div>                                
+                                {% comment %} <input type="email" placeholder="Email">
+                                <input type="password" placeholder="Contraseña"> {% endcomment %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

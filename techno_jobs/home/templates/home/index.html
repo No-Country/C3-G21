@@ -3,14 +3,14 @@
 {% block title %} TechJobs - Portal de empleo {% endblock %}
 
 {% block content %}
-        <!-- background -->
-        <div class="background">
-            <div class="back-flex">
-                <div class="div1"></div>
-                <div class="div2"></div>
-            </div>
-        </div>
-        
+
+<!-- background -->
+<div class="background">
+    <div class="back-flex">
+        <div class="div1"></div>
+        <div class="div2"></div>
+    </div>
+</div>
         <!-- Barra de navegación -->
 <div class="container, barra-navegacion">
     <a href="{% url 'home:index' %}"><img src="{% static '../../static/home/images/Logo.svg' %}" alt="logo" id="logo"></a>
@@ -26,18 +26,18 @@
         # TODO: toastr {% endcomment %}
         <p>Bienvenido {{user.username}} </p>
         {% comment %} FIXME: linkear a la view {% endcomment %}
-        <a href="{% url 'user:logout' %}">Cerrar sesión</a>
+        <a href="{% url 'home:logout' %}">Cerrar sesión</a>
         {% else %}
-        <a href="{% url 'user:register' %}">Crear cuenta</a>
+        <a href="{% url 'home:login' %}">Iniciar sesión</a>
         {% endif %}
     </div>
 </div>
-
 <!-- end Barra de navegación -->
+
 {% if user.is_authenticated %}
 {% comment %} FIXME: arreglar CSS y funcionalidad, ofertas de trabajo si el user es user o perfiles si es empresa
 TODO: toastr {% endcomment %}
-<p>Bienvenido {{user.username}} </p>
+<p>Bienvenido {{ user.username }} </p>
 {% else %}
 <div class="container m-a">
     <div class="container-main m-a">
@@ -51,55 +51,54 @@ TODO: toastr {% endcomment %}
                     buscando al próximo talento que se una a ellos. <span class="span">¡Tu futuro trabajo te está
                         esperando!</span></p>
                         
-                        <a href="{% url 'user:register' %}" class="btn-secondary">Crea tu cuenta</a>
-                            
-                            <div class="info flex flex-j-content-space-b">
-                                <div class="users">
-                                    <h3 class="t-c">Profesionales</h3>
-                                    <div class="sections flex flex-j-content-c flex-wrap">
-                                        <div>Diseñador UI/UX</div>
-                                <div>Programador web</div>
-                                <div>Analista de sistemas</div>
-                                <div>Comunity manager</div>
-                                <div>DevOps</div>
-                                <div>Qa Tester</div>
-                            </div>
+                        <a href="{% url 'home:register' %}" class="btn-secondary">Crea tu cuenta</a>
+
+                        <div class="info flex flex-j-content-space-b">
+                            <div class="users">
+                                <h3 class="t-c">Profesionales</h3>
+                                <div class="sections flex flex-j-content-c flex-wrap">
+                                    <div>Diseñador UI/UX</div>
+                            <div>Programador web</div>
+                            <div>Analista de sistemas</div>
+                            <div>Comunity manager</div>
+                            <div>DevOps</div>
+                            <div>Qa Tester</div>
                         </div>
-                        <div class="employeers">
-                            <h3 class="t-c">Empresas</h3>
-                            <div class="emp flex flex-j-content-c flex-wrap">
-                                <img src="{% static '../../static/home/images/empresa(1).png' %}" alt="Globant">
-                                <img src="{% static '../../static/home/images/empresa(2).png' %}" alt="Link">
-                                <img src="{% static '../../static/home/images/empresa(3).png' %}" alt="Accenture">
-                                <img src="{% static '../../static/home/images/empresa(4).png' %}" alt="Santander">
-                                <img src="{% static '../../static/home/images/empresa(5).png' %}" alt="Uala">
-                                <img src="{% static '../../static/home/images/Empresa(6).png' %}" alt="Pedidos Ya">
-                                <img src="{% static '../../static/home/images/Empresa(7).png' %}" alt="Plus">
-                                <img src="{% static '../../static/home/images/Empresa(8).png' %}" alt="Load">
-                                <img src="{% static '../../static/home/images/Empresa(9).png' %}" alt="Accenture">
-                            </div>
+                    </div>
+                    <div class="employeers">
+                        <h3 class="t-c">Empresas</h3>
+                        <div class="emp flex flex-j-content-c flex-wrap">
+                            <img src="{% static '../static/home/images/empresa.png' %}" alt="MercadoLibre">
+                            <img src="{% static '../static/home/images/empresa(1).png' %}" alt="Globant">
+                            <img src="{% static '../static/home/images/empresa(2).png' %}" alt="Link">
+                            <img src="{% static '../static/home/images/empresa(3).png' %}" alt="Accenture">
+                            <img src="{% static '../static/home/images/empresa(4).png' %}" alt="Santander">
+                            <img src="{% static '../static/home/images/empresa(5).png' %}" alt="Uala">
                         </div>
                     </div>
                 </div>
-                <div class="form">
-                    <div class="form-body">
-                        <form>
-                            <h2 class="t-c">Ingresá tu cuenta</h2>
-                            <div class="flex flex-dir-col">
-                                <input type="email" placeholder="Email">
-                                <input type="password" placeholder="Contraseña">
+            </div>
+            <div class="form">
+                <div class="form-body">
+                    <form class="" method="post">
+                        <h2 class="t-c">Ingresá a tu cuenta</h2>
+                        <div class="flex flex-dir-col">
+                                {% csrf_token %}
+                                {{ form.as_p }}
                             </div>
                             <div class="flex flex-dir-col">
-                                <input class="btn-main" type="submit" value="Ingresar">
+                                <button class="btn-main" type="submit">Ingresar</button>
                                 {% comment %} FIXME: CSS en el link, agregar la clase a los links del nav y modificar en todas las pages {% endcomment %}
                                 <a href="#" class="">¿Olvidaste tu contraseña?</a>
-                            </div>
-                        </form>
-                    </div>
+                            </div>                                
+                            {% comment %} <input type="email" placeholder="Email">
+                            <input type="password" placeholder="Contraseña"> {% endcomment %}
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!--  -->
     <!-- <div>
@@ -257,7 +256,7 @@ TODO: toastr {% endcomment %}
                 </div>
             </div>
         </div>
-        <a href="{% url 'user:register' %}">Ver más</a>
+        <a href="{% url 'home:register' %}">Ver más</a>
     </div>
 
     <!-- Perfiles -->
@@ -272,7 +271,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Id eum cum distinctio suscipit incidunt saepe fugiat, ullam quis itaque, sunt quo hic quisquam fuga inventore assumenda porro vitae molestias veniam..."</p>
                 </div>
-                <a href="{% url 'user:register' %}">Ver el perfil de Camila</a>
+                <a href="{% url 'home:register' %}">Ver el perfil de Camila</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -282,7 +281,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim placeat sed iusto iste fuga assumenda sapiente, cumque molestiae nesciunt sequi voluptatum inventore. Corrupti assumenda eius, ex modi et magnam quidem..."</p>
                 </div>
-                <a href="{% url 'user:register' %}">Ver el perfil de Rodrigo</a>
+                <a href="{% url 'home:register' %}">Ver el perfil de Rodrigo</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -292,7 +291,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero ratione beatae molestias. Architecto nemo reprehenderit praesentium accusantium inventore ex voluptatem alias. Quos adipisci ullam ipsum libero in quaerat"</p>
                 </div>
-                <a href="{% url 'user:register' %}">Ver el perfil de Marcela</a>
+                <a href="{% url 'home:register' %}">Ver el perfil de Marcela</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -302,7 +301,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, provident! Exercitationem, deserunt veritatis minima quia voluptatem quos nihil quisquam numquam libero qui ipsa itaque quas ex perferendis"</p>
                 </div>
-                <a href="{% url 'user:register' %}">Ver el perfil de Agustín</a>
+                <a href="{% url 'home:register' %}">Ver el perfil de Agustín</a>
             </div>
         </div>
     </div>
