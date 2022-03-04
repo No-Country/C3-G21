@@ -23,10 +23,10 @@ class Company(models.Model):
     email = models.EmailField()
     password1 = models.CharField(max_length=20)
     password2 = models.CharField(max_length=20)
-
     company_name = models.CharField(max_length=150)
     location = models.CharField(choices=COUNTRY_CHOICES, max_length=50)
-
+    phone = models.IntegerField(default=0)
+    web = models.CharField(max_length=150, default='example.com')
 
     def __str__(self) -> str:
         return f'{self.id}: {self.lastname}, {self.name}'
