@@ -12,10 +12,6 @@ Instalación 🔧
    FIGMA
    HTML
    CSS
-   JAVASCRIPT
-   JAVA
-   MAVEN
-   SPRING - BOOT
-   
+   DJANGO
    
 Autores ✒️
