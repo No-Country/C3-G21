@@ -9,10 +9,10 @@ Además no solo las personas podrán buscar su empleo sino que las empresas podr
 ## Instalación 🔧
  
 ## Stack 🛠️
- DJANGO
- FIGMA
- HTML
- CSS
+- DJANGO
+- FIGMA
+- HTML
+- CSS
  
 ## Autores ✒️
 - [Paola Cartala](https://github.com/PaolaCartala)
