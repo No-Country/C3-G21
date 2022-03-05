@@ -53,6 +53,8 @@ from django.forms import ModelForm
 from .models import User, Company, Offer
 
 class UsuarioForm(ModelForm):
+    cv = forms.FileField(required=True)
+
     class Meta:
         model = User
         fields = ['name', 'lastname', 'email', 'password1', 'password2', 'cv']

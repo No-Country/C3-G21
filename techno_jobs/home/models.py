@@ -36,7 +36,6 @@ class User(models.Model):
     password1 = models.CharField("Contraseña", max_length=20)
     password2 = models.CharField("Repetir contraseña", max_length=20)
     # TODO: agregar campos del perfil completo de la otra form
-    cv = models.FileField(required=True)
     job_offer_id = models.ManyToManyField(Offer)
 
     def __str__(self) -> str:
