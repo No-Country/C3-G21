@@ -1,5 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
+
 {% block title %} Registrarse - TechJobs {% endblock %}
 
 {% block content %}
@@ -19,13 +20,26 @@
     <!-- end Barra de navegación -->
 
             <!-- Mensajes -->
-            {% if messages %}
+            {% comment %} {% if messages %}
             {% for message in messages %}
                 <div>
                     {{ message }}
                 </div>
             {% endfor %}
-        {% endif %}
+        {% endif %} {% endcomment %}
+        {% comment %} {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success'%}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'info' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'warning' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'error' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% endif %}
+        {% endfor %}
+    {% endif %} {% endcomment %}
 
     <div class="container m-a">
         <div class="container-main m-a">
@@ -36,38 +50,26 @@
                 </div>
 
                 <!-- Form de registro -->
-                <div class="flex flex-dir-col">
-                    <p>¿Con cuál te identificás?</p>
-                    <button type="button" id="user" onclick="divRegisterUser()">Busco empleo</button>
-                    <button type="button" id="company" onclick="divRegisterUser()">Ofrezco empleo</button>
-                </div>
-                <div class="form">
-                    <div class="form-body" >
+                <div class="form form-user">
+                    <div class="form-body">
                         <form action="" method="post" >
                             {% csrf_token %}
-                                {{ form.as_p }}
-                                <div class="flex flex-dir-col">
-                                    <button class="btn-main" type="submit">Crear cuenta</button>
-                                    <a href="{% url 'home:index' %}">Volver</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="form">
-                        <div class="form-body" >
-                            <form action="" method="post" >
+                            {{ form.as_p }}
+                            {% comment %} <form action="{% url 'Core:uploadFile' %}" method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                {{ form_company.as_p }}
-                                    <div class="flex flex-dir-col">
-                                        <button class="btn-main" type="submit">Crear cuenta</button>
-                                        <a href="{% url 'home:index' %}">Volver</a>
-                                    </div>
-                                </form>
+                                <input type="text" name="fileTitle" placeholder="Enter a title">
+                                <input type="file" name="uploadedFile">
+                                <input type="submit" value="Upload">
+                            </form> {% endcomment %}
+                            <div class="flex flex-dir-col">
+                                <button class="btn-main" type="submit">Crear cuenta</button>
+                                <a href="{% url 'home:index' %}">Volver</a>
                             </div>
-                        </div>
+                        </form>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
-
-    <script></script>
     {% endblock %}

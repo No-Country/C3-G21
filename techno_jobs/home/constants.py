@@ -182,3 +182,8 @@ COUNTRY_CHOICES = (
     ('Zimbabue', 'Zimbabue'),
 
 )
+
+MODALITY_CHOICES = (
+    ('Presencial', 'Presencial'),
+    ('Remoto', 'Remoto'),
+)

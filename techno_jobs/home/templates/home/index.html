@@ -37,7 +37,7 @@
 {% if user.is_authenticated %}
 {% comment %} FIXME: arreglar CSS y funcionalidad, ofertas de trabajo si el user es user o perfiles si es empresa
 TODO: toastr {% endcomment %}
-<p>Bienvenido {{ user.username }} </p>
+<a href="{% url 'home:login' %}">Bienvenido {{ user.username }} </a>
 {% else %}
 <div class="container m-a">
     <div class="container-main m-a">
@@ -51,7 +51,8 @@ TODO: toastr {% endcomment %}
                     buscando al próximo talento que se una a ellos. <span class="span">¡Tu futuro trabajo te está
                         esperando!</span></p>
                         
-                        <a href="{% url 'home:register' %}" class="btn-secondary">Crea tu cuenta</a>
+                        <a href="{% url 'home:register-user' %}" class="btn-secondary">Busco empleo</a>
+                        <a href="{% url 'home:register-company' %}" class="btn-secondary">Ofrezco empleo</a>
 
                         <div class="info flex flex-j-content-space-b">
                             <div class="users">
@@ -256,7 +257,7 @@ TODO: toastr {% endcomment %}
                 </div>
             </div>
         </div>
-        <a href="{% url 'home:register' %}">Ver más</a>
+        <a href="{% url 'home:login' %}">Ver más</a>
     </div>
 
     <!-- Perfiles -->
@@ -271,7 +272,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Id eum cum distinctio suscipit incidunt saepe fugiat, ullam quis itaque, sunt quo hic quisquam fuga inventore assumenda porro vitae molestias veniam..."</p>
                 </div>
-                <a href="{% url 'home:register' %}">Ver el perfil de Camila</a>
+                <a href="{% url 'home:login' %}">Ver el perfil de Camila</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -281,7 +282,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim placeat sed iusto iste fuga assumenda sapiente, cumque molestiae nesciunt sequi voluptatum inventore. Corrupti assumenda eius, ex modi et magnam quidem..."</p>
                 </div>
-                <a href="{% url 'home:register' %}">Ver el perfil de Rodrigo</a>
+                <a href="{% url 'home:login' %}">Ver el perfil de Rodrigo</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -291,7 +292,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero ratione beatae molestias. Architecto nemo reprehenderit praesentium accusantium inventore ex voluptatem alias. Quos adipisci ullam ipsum libero in quaerat"</p>
                 </div>
-                <a href="{% url 'home:register' %}">Ver el perfil de Marcela</a>
+                <a href="{% url 'home:login' %}">Ver el perfil de Marcela</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -301,7 +302,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, provident! Exercitationem, deserunt veritatis minima quia voluptatem quos nihil quisquam numquam libero qui ipsa itaque quas ex perferendis"</p>
                 </div>
-                <a href="{% url 'home:register' %}">Ver el perfil de Agustín</a>
+                <a href="{% url 'home:login' %}">Ver el perfil de Agustín</a>
             </div>
         </div>
     </div>

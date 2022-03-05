@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
-{% block title %} Registrarse - TechJobs {% endblock %}
+{% block title %} Iniciar sesión - TechJobs {% endblock %}
 
 {% block content %}
 <!-- background -->
@@ -27,7 +27,8 @@
         {% comment %} FIXME: linkear a la view {% endcomment %}
         <a href="{% url 'home:logout' %}">Cerrar sesión</a>
         {% else %}
-        <a href="{% url 'home:register' %}">Crear cuenta</a>
+        <a href="{% url 'home:register-user' %}">Crear cuenta</a>
+        <a href="{% url 'home:register-company' %}">Soy empresa</a>
         {% endif %}
     </div>
 </div>
@@ -43,7 +44,8 @@
                 Porro quos illo dolores velit accusantium consequatur ullam voluptatum aliquid quo odio a, nemo cumque iusto! Et repudiandae molestiae quaerat, commodi blanditiis a, quam maiores vero aut odio soluta laudantium.
                 Libero vero placeat reiciendis non inventore veniam aut qui accusamus voluptas. Quidem cupiditate recusandae iste quia quam molestias, a ab nemo nostrum repellat magnam quos obcaecati quae laudantium ipsum veniam!</p>
                         
-                        <a href="{% url 'home:register' %}" class="btn-secondary">Crea tu cuenta</a>
+                    <a href="{% url 'home:register-user' %}" class="btn-secondary">Busco empleo</a>
+                    <a href="{% url 'home:register-company' %}" class="btn-secondary">Ofrezco empleo</a>
                         
                         <div class="info flex flex-j-content-space-b">
                             <div class="users">
