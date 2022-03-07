@@ -1,7 +1,7 @@
 {% extends './base.html' %}
 {% load static %}
 
-{% block title %} Perfil - TechJobs {% endblock %}
+{% block title %} Registro - TechJobs {% endblock %}
 
 {% block content %}
     <!-- Barra de navegación, Paola -->
@@ -14,7 +14,7 @@
         </div>
         <div id="crear-cuenta">
             <a href="{% url 'home:faq' %}">Preguntas frecuentes</a>
-            <a href="{% url 'home:login' %}">Iniciar Sesión</a>
+            <a href="{% url 'account_login' %}">Iniciar Sesión</a>
         </div>
     </div>
     <!-- end Barra de navegación -->
@@ -33,10 +33,10 @@
                     <div class="form-body">
                         <form action="" method="post" >
                             {% csrf_token %}
-                            {{ form_company.as_p }}
+                            {{ form_company.as_p | crispy }}
                             <div class="flex flex-dir-col">
                                 <button class="btn-main" type="submit">Crear cuenta</button>
-                                <a href="{% url 'home:index' %}">Volver</a>
+                                <a href="{% url 'home:index' %}">Volver al Home</a>
                             </div>
                         </form>
                     </div>

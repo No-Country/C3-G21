@@ -14,7 +14,7 @@
         </div>
         <div id="crear-cuenta">
             <a href="{% url 'home:faq' %}">Preguntas frecuentes</a>
-            <a href="{% url 'home:login' %}">Iniciar Sesión</a>
+            <a href="{% url 'account_login' %}">Iniciar Sesión</a>
         </div>
     </div>
     <!-- end Barra de navegación -->
@@ -52,7 +52,7 @@
                 <!-- Form de registro -->
                 <div class="form form-user">
                     <div class="form-body">
-                        <form action="" method="post" >
+                        <form action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p }}
                             {% comment %} <form action="{% url 'Core:uploadFile' %}" method="POST" enctype="multipart/form-data">

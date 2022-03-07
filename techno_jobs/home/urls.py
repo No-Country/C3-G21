@@ -7,10 +7,13 @@ app_name = 'home'
 urlpatterns = [
     path('', views.home, name='index'),
     path('faq/', views.faq, name='faq'),
-    path('register-user/', views.register_user, name='register-user'),
+    # path('register-user/', views.register_user, name='register-user'),
     path('register-company/', views.register_company, name='register-company'),
-    path('login/', LoginView.as_view(template_name='home/login.html'), name='login'),
-    path('user-profile/', views.user_profile, name='user-profile'),
+    # path('login/', LoginView.as_view(template_name='home/login.html'), name='login'),
+    # path('user-profile/', views.user_profile, name='user-profile'),
+    path('user-profile/<username>', views.UserProfileView.as_view(), name='user-profile'),
+    path('edit-profile/', views.EditUserProfile, name='edit-profile'),
     path('company-profile/', views.company_profile, name='company-profile'),
     path('logout/', views.logout_view, name='logout'),
+
 ]

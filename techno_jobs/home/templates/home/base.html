@@ -1,35 +1,53 @@
 <!DOCTYPE html>
+{% load static %}
+{% comment %} {% load static tailwind_tags %}
+{% load tailwind_filters %} {% endcomment %}
 <html lang="en">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{% static '../static/home/images/briefcase-solid.svg' %}">
-    <link rel="stylesheet" href="{% static '../static/home/style/style.css' %}">
+    
+    <!-- Toastr plugin -->
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static '../static/home/plugins/toastr/toastr.min.css' %}" media="all"> {% endcomment %}
+    
+    <!-- Mis estilos -->
+    <link rel="icon" href="{% static 'home/images/briefcase-solid.svg' %}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
     </style>
-    <!-- Toastr plugin -->
-    <link rel="stylesheet" type="text/css" href="{% static '../static/home/plugins/toastr/toastr.min.css' %}" media="all">
-    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'home/style/style.css' %}">
+
+    {% block extra_head %}
+    {% endblock %}
+    
+    <title>{% block head_title %} {% endblock %}</title>
 </head>
 <body>
-    {% if messages %}
-        {% for message in messages %}
-            {% if message.tags == 'success'%}
-                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-            {% elif message.tags == 'info' %}
-                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-            {% elif message.tags == 'warning' %}
-                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-            {% elif message.tags == 'error' %}
-                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-    {% block content %}
-    
+    {% block body %}
+
+        <!-- FIXME: agregar toastr -->
+        {% comment %} {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success'%}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                {% elif message.tags == 'info' %}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                {% elif message.tags == 'warning' %}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                {% elif message.tags == 'error' %}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                {% endif %}
+            {% endfor %}
+        {% endif %} {% endcomment %}
+
+        {% block content %}
+        
+        {% endblock %}
+
+    {% endblock %}
+
+    {% block extra_body %}
     {% endblock %}
     
     <!-- Footer -->
@@ -38,10 +56,10 @@
             <p>Copyright © 2022 - TECH JOBS<p>
             </div>
             <div id="redes-sociales">
-                <a href="https://www.linkedin.com/in/paola-cartala/" id="linkedin" target='_blank' ><img src="{% static '../static/home/images/linkedin-brands.svg' %}" alt="linkedin"></a>
-                <a href="mailto:paola.cartala@gmail.com"><img src="{% static '../static/home/images/at-solid.svg' %}" alt="email"></a>
-                <a href="#"><img src="{% static '../static/home/images/facebook-square-brands.svg' %}" alt="facebook"></a>
-                <a href="https://www.instagram.com/paoc.bj23/" target='_blank' ><img src="{% static '../static/home/images/instagram-brands.svg' %}" alt="instagram"></a>
+                <a href="https://www.linkedin.com/in/paola-cartala/" id="linkedin" target='_blank' ><img src="{% static '/home/images/linkedin-brands.svg' %}" alt="linkedin"></a>
+                <a href="mailto:paola.cartala@gmail.com"><img src="{% static '/home/images/at-solid.svg' %}" alt="email"></a>
+                <a href="#"><img src="{% static '/home/images/facebook-square-brands.svg' %}" alt="facebook"></a>
+                <a href="https://www.instagram.com/paoc.bj23/" target='_blank' ><img src="{% static '/home/images/instagram-brands.svg' %}" alt="instagram"></a>
             </div>
         </footer>
 

@@ -13,9 +13,9 @@
 </div>
         <!-- Barra de navegación -->
 <div class="container, barra-navegacion">
-    <a href="{% url 'home:index' %}"><img src="{% static '../../static/home/images/Logo.svg' %}" alt="logo" id="logo"></a>
+    <a href="{% url 'home:index' %}"><img src="{% static 'home/images/Logo.svg' %}" alt="logo" id="logo"></a>
     <div id="busqueda">
-        <input type="text" name="buscar" id="" placeholder="Buscar empleos o profesionales...">
+        <input type="text" name="buscar" id="find" placeholder="Buscar empleos o profesionales...">
         <button type="submit"><img id="lupa"
                 src="https://img.icons8.com/windows/50/000000/search--v2.png" /></button>
     </div>
@@ -24,83 +24,173 @@
         {% if user.is_authenticated %}
         {% comment %} # FIXME: arreglar CSS y funcionalidad
         # TODO: toastr {% endcomment %}
-        <p>Bienvenido {{user.username}} </p>
+        <a href="{% url 'home:user-profile' user.username %}">Mi perfil</a>
         {% comment %} FIXME: linkear a la view {% endcomment %}
         <a href="{% url 'home:logout' %}">Cerrar sesión</a>
         {% else %}
-        <a href="{% url 'home:login' %}">Iniciar sesión</a>
+        <a href="{% url 'account_login' %}">Iniciar sesión</a>
         {% endif %}
     </div>
 </div>
 <!-- end Barra de navegación -->
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated and user.profile.is_professional %}
 {% comment %} FIXME: arreglar CSS y funcionalidad, ofertas de trabajo si el user es user o perfiles si es empresa
 TODO: toastr {% endcomment %}
-<a href="{% url 'home:login' %}">Bienvenido {{ user.username }} </a>
-{% else %}
-<div class="container m-a">
-    <div class="container-main m-a">
-        <div class="main-flex">
-            <div class="body">
-                <h1>Te ayudamos a buscar el empleo o candidato ideal.</h1>
-                <p>Somos una plataforma totalmente gratuita que cuenta con diferentes ofertas laborales para que te
-                    puedas
-                    postular en unos pocos minutos. Tu perfil va a ser visto por empleadores de grandes empresas que
-                    están
-                    buscando al próximo talento que se una a ellos. <span class="span">¡Tu futuro trabajo te está
-                        esperando!</span></p>
-                        
-                        <a href="{% url 'home:register-user' %}" class="btn-secondary">Busco empleo</a>
-                        <a href="{% url 'home:register-company' %}" class="btn-secondary">Ofrezco empleo</a>
-
-                        <div class="info flex flex-j-content-space-b">
-                            <div class="users">
-                                <h3 class="t-c">Profesionales</h3>
-                                <div class="sections flex flex-j-content-c flex-wrap">
-                                    <div>Diseñador UI/UX</div>
-                            <div>Programador web</div>
-                            <div>Analista de sistemas</div>
-                            <div>Comunity manager</div>
-                            <div>DevOps</div>
-                            <div>Qa Tester</div>
-                        </div>
-                    </div>
-                    <div class="employeers">
-                        <h3 class="t-c">Empresas</h3>
-                        <div class="emp flex flex-j-content-c flex-wrap">
-                            <img src="{% static '../static/home/images/empresa.png' %}" alt="MercadoLibre">
-                            <img src="{% static '../static/home/images/empresa(1).png' %}" alt="Globant">
-                            <img src="{% static '../static/home/images/empresa(2).png' %}" alt="Link">
-                            <img src="{% static '../static/home/images/empresa(3).png' %}" alt="Accenture">
-                            <img src="{% static '../static/home/images/empresa(4).png' %}" alt="Santander">
-                            <img src="{% static '../static/home/images/empresa(5).png' %}" alt="Uala">
-                        </div>
-                    </div>
+<!-- FIXME: Puestos hardcoded -->
+<div id="empleos">
+    <h2>Puestos que te pueden interesar...</h2>
+    {% comment %} # TODO: ficha para aplicar a los trabajos {% endcomment %}
+    <div id="cards-empleos">
+        <div class="card-empleos pedidosya">
+            <div class="card-header-empleos">
+                <img src="{% static '../../static/home/images/Empresa(6).png' %}" alt="logo-pedidos-ya">
+                <div class="card-header-title">
+                    <h3>PEDIDOS YA</h3>
+                    <h4>Software Engineer Backend</h4>
                 </div>
             </div>
-            <div class="form">
-                <div class="form-body">
-                    <form class="" method="post">
-                        <h2 class="t-c">Ingresá a tu cuenta</h2>
-                        <div class="flex flex-dir-col">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                            </div>
-                            <div class="flex flex-dir-col">
-                                <button class="btn-main" type="submit">Ingresar</button>
-                                {% comment %} FIXME: CSS en el link, agregar la clase a los links del nav y modificar en todas las pages {% endcomment %}
-                                <a href="#" class="">¿Olvidaste tu contraseña?</a>
-                            </div>                                
-                            {% comment %} <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Contraseña"> {% endcomment %}
-                    </form>
+            <div class="card-description">
+                <p>PedidosYa es la empresa de tecnología líder en delivery y quick commerce presente en 15 países de América Latina. Nuestro objetivo es brindar experiencias únicas a nuestros clie...</p>
+            </div>
+            <div class="tags">
+                <p>ARGENTINA</p>
+                <p>REMOTO</p>
+                <p>FULL TIME</p>
+                <p>SENIOR</p>
+            </div>
+        </div>
+        <div class="card-empleos huli">
+            <div class="card-header-empleos">
+                <img src="{% static '../../static/home/images/Empresa(7).png' %}" alt="logo-huli">
+                <div class="card-header-title">
+                    <h3>HULI</h3>
+                    <h4>Ingeniero de Software Frontend</h4>
                 </div>
+            </div>
+            <div class="card-description">
+                <p>Huli es uno de los startup de mayor crecimiento en Costa Rica, nos dedicamos a crear soluciones que conectan pacientes y proveedores de salud. Con oficinas en Costa Rica y...</p>
+            </div>
+            <div class="tags">
+                <p>COSTA RICA</p>
+                <p>HIBRIDO</p>
+                <p>FULL TIME</p>
+                <p>SEMI-SENIOR</p>
+            </div>
+        </div>
+        <div class="card-empleos accenture">
+            <div class="card-header-empleos">
+                <img src="{% static '../../static/home/images/Empresa(9).png' %}" alt="logo-accenture">
+                <div class="card-header-title">
+                    <h3>ACCENTURE</h3>
+                    <h4>Asistente de Recursos Humanos</h4>
+                </div>
+            </div>
+            <div class="card-description">
+                <p>Sumate a nuestra unidad de Accenture Operations donde podrás conectar las capacidades necesarias para sobresalir en un mundo digital y proporcionar innovación contínua...</p>
+            </div>
+            <div class="tags">
+                <p>ARGENTINA</p>
+                <p>PRESENCIAL</p>
+                <p>FULL TIME</p>
+                <p>JUNIOR</p>
+            </div>
+        </div>
+        <div class="card-empleos invgate">
+            <div class="card-header-empleos">
+                <img src="{% static '../../static/home/images/Empresa(8).png' %}" alt="logo-invgate">
+                <div class="card-header-title">
+                    <h3>INVGATE</h3>
+                    <h4>DevOps Engineer</h4>
+                </div>
+            </div>
+            <div class="card-description">
+                <p>En InvGate desarrollamos productos para optimizar la prestación de servicios de IT, diseñando features intuitivas y fáciles de usar. Estamos presentes en más de 50 países en los...</p>
+            </div>
+            <div class="tags">
+                <p>ARGENTINA</p>
+                <p>REMOTO</p>
+                <p>FULL TIME</p>
+                <p>SENIOR</p>
+            </div>
+        </div>
+        <div class="card-empleos accenture card3">
+            <div class="card-header-empleos">
+                <img src="{% static '../../static/home/images/Empresa(9).png' %}" alt="logo-accenture">
+                <div class="card-header-title">
+                    <h3>ACCENTURE</h3>
+                    <h4>Asistente de Recursos Humanos</h4>
+                </div>
+            </div>
+            <div class="card-description">
+                <p>Sumate a nuestra unidad de Accenture Operations donde podrás conectar las capacidades necesarias para sobresalir en un mundo digital y proporcionar innovación contínua...</p>
+            </div>
+            <div class="tags">
+                <p>ARGENTINA</p>
+                <p>PRESENCIAL</p>
+                <p>FULL TIME</p>
+                <p>JUNIOR</p>
+            </div>
+        </div>
+        <div class="card-empleos invgate">
+            <div class="card-header-empleos">
+                <img src="{% static '../../static/home/images/Empresa(8).png' %}" alt="logo-invgate">
+                <div class="card-header-title">
+                    <h3>INVGATE</h3>
+                    <h4>DevOps Engineer</h4>
+                </div>
+            </div>
+            <div class="card-description">
+                <p>En InvGate desarrollamos productos para optimizar la prestación de servicios de IT, diseñando features intuitivas y fáciles de usar. Estamos presentes en más de 50 países en los...</p>
+            </div>
+            <div class="tags">
+                <p>ARGENTINA</p>
+                <p>REMOTO</p>
+                <p>FULL TIME</p>
+                <p>SENIOR</p>
+            </div>
+        </div>
+        <div class="card-empleos pedidosya card2">
+            <div class="card-header-empleos">
+                <img src="{% static '../../static/home/images/Empresa(6).png' %}" alt="logo-pedidos-ya">
+                <div class="card-header-title">
+                    <h3>PEDIDOS YA</h3>
+                    <h4>Software Engineer Backend</h4>
+                </div>
+            </div>
+            <div class="card-description">
+                <p>PedidosYa es la empresa de tecnología líder en delivery y quick commerce presente en 15 países de América Latina. Nuestro objetivo es brindar experiencias únicas a nuestros clie...</p>
+            </div>
+            <div class="tags">
+                <p>ARGENTINA</p>
+                <p>REMOTO</p>
+                <p>FULL TIME</p>
+                <p>SENIOR</p>
+            </div>
+        </div>
+        <div class="card-empleos huli">
+            <div class="card-header-empleos">
+                <img src="{% static '../../static/home/images/Empresa(7).png' %}" alt="logo-huli">
+                <div class="card-header-title">
+                    <h3>HULI</h3>
+                    <h4>Ingeniero de Software Frontend</h4>
+                </div>
+            </div>
+            <div class="card-description">
+                <p>Huli es uno de los startup de mayor crecimiento en Costa Rica, nos dedicamos a crear soluciones que conectan pacientes y proveedores de salud. Con oficinas en Costa Rica y...</p>
+            </div>
+            <div class="tags">
+                <p>COSTA RICA</p>
+                <p>HIBRIDO</p>
+                <p>FULL TIME</p>
+                <p>SEMI-SENIOR</p>
             </div>
         </div>
     </div>
+    {% comment %} <a href="{% url 'account_login' %}">Ver más</a> {% endcomment %}
 </div>
 
+{% elif user.is_authenticated and user.profile.is_company %}
     <!--  -->
     <!-- <div>
         <h3>¿Qué estás buscando?</h3>
@@ -108,158 +198,6 @@ TODO: toastr {% endcomment %}
         <a href="#">Empresas</a>
     </div> -->
     
-    <!-- Puestos hardcoded -->
-    <div id="empleos">
-        <h2>Puestos que te pueden interesar...</h2>
-        <div id="cards-empleos">
-            <div class="card-empleos pedidosya">
-                <div class="card-header-empleos">
-                    <img src="{% static '../../static/home/images/Empresa(6).png' %}" alt="logo-pedidos-ya">
-                    <div class="card-header-title">
-                        <h3>PEDIDOS YA</h3>
-                        <h4>Software Engineer Backend</h4>
-                    </div>
-                </div>
-                <div class="card-description">
-                    <p>PedidosYa es la empresa de tecnología líder en delivery y quick commerce presente en 15 países de América Latina. Nuestro objetivo es brindar experiencias únicas a nuestros clie...</p>
-                </div>
-                <div class="tags">
-                    <p>ARGENTINA</p>
-                    <p>REMOTO</p>
-                    <p>FULL TIME</p>
-                    <p>SENIOR</p>
-                </div>
-            </div>
-            <div class="card-empleos huli">
-                <div class="card-header-empleos">
-                    <img src="{% static '../../static/home/images/Empresa(7).png' %}" alt="logo-huli">
-                    <div class="card-header-title">
-                        <h3>HULI</h3>
-                        <h4>Ingeniero de Software Frontend</h4>
-                    </div>
-                </div>
-                <div class="card-description">
-                    <p>Huli es uno de los startup de mayor crecimiento en Costa Rica, nos dedicamos a crear soluciones que conectan pacientes y proveedores de salud. Con oficinas en Costa Rica y...</p>
-                </div>
-                <div class="tags">
-                    <p>COSTA RICA</p>
-                    <p>HIBRIDO</p>
-                    <p>FULL TIME</p>
-                    <p>SEMI-SENIOR</p>
-                </div>
-            </div>
-            <div class="card-empleos accenture">
-                <div class="card-header-empleos">
-                    <img src="{% static '../../static/home/images/Empresa(9).png' %}" alt="logo-accenture">
-                    <div class="card-header-title">
-                        <h3>ACCENTURE</h3>
-                        <h4>Asistente de Recursos Humanos</h4>
-                    </div>
-                </div>
-                <div class="card-description">
-                    <p>Sumate a nuestra unidad de Accenture Operations donde podrás conectar las capacidades necesarias para sobresalir en un mundo digital y proporcionar innovación contínua...</p>
-                </div>
-                <div class="tags">
-                    <p>ARGENTINA</p>
-                    <p>PRESENCIAL</p>
-                    <p>FULL TIME</p>
-                    <p>JUNIOR</p>
-                </div>
-            </div>
-            <div class="card-empleos invgate">
-                <div class="card-header-empleos">
-                    <img src="{% static '../../static/home/images/Empresa(8).png' %}" alt="logo-invgate">
-                    <div class="card-header-title">
-                        <h3>INVGATE</h3>
-                        <h4>DevOps Engineer</h4>
-                    </div>
-                </div>
-                <div class="card-description">
-                    <p>En InvGate desarrollamos productos para optimizar la prestación de servicios de IT, diseñando features intuitivas y fáciles de usar. Estamos presentes en más de 50 países en los...</p>
-                </div>
-                <div class="tags">
-                    <p>ARGENTINA</p>
-                    <p>REMOTO</p>
-                    <p>FULL TIME</p>
-                    <p>SENIOR</p>
-                </div>
-            </div>
-            <div class="card-empleos accenture card3">
-                <div class="card-header-empleos">
-                    <img src="{% static '../../static/home/images/Empresa(9).png' %}" alt="logo-accenture">
-                    <div class="card-header-title">
-                        <h3>ACCENTURE</h3>
-                        <h4>Asistente de Recursos Humanos</h4>
-                    </div>
-                </div>
-                <div class="card-description">
-                    <p>Sumate a nuestra unidad de Accenture Operations donde podrás conectar las capacidades necesarias para sobresalir en un mundo digital y proporcionar innovación contínua...</p>
-                </div>
-                <div class="tags">
-                    <p>ARGENTINA</p>
-                    <p>PRESENCIAL</p>
-                    <p>FULL TIME</p>
-                    <p>JUNIOR</p>
-                </div>
-            </div>
-            <div class="card-empleos invgate">
-                <div class="card-header-empleos">
-                    <img src="{% static '../../static/home/images/Empresa(8).png' %}" alt="logo-invgate">
-                    <div class="card-header-title">
-                        <h3>INVGATE</h3>
-                        <h4>DevOps Engineer</h4>
-                    </div>
-                </div>
-                <div class="card-description">
-                    <p>En InvGate desarrollamos productos para optimizar la prestación de servicios de IT, diseñando features intuitivas y fáciles de usar. Estamos presentes en más de 50 países en los...</p>
-                </div>
-                <div class="tags">
-                    <p>ARGENTINA</p>
-                    <p>REMOTO</p>
-                    <p>FULL TIME</p>
-                    <p>SENIOR</p>
-                </div>
-            </div>
-            <div class="card-empleos pedidosya card2">
-                <div class="card-header-empleos">
-                    <img src="{% static '../../static/home/images/Empresa(6).png' %}" alt="logo-pedidos-ya">
-                    <div class="card-header-title">
-                        <h3>PEDIDOS YA</h3>
-                        <h4>Software Engineer Backend</h4>
-                    </div>
-                </div>
-                <div class="card-description">
-                    <p>PedidosYa es la empresa de tecnología líder en delivery y quick commerce presente en 15 países de América Latina. Nuestro objetivo es brindar experiencias únicas a nuestros clie...</p>
-                </div>
-                <div class="tags">
-                    <p>ARGENTINA</p>
-                    <p>REMOTO</p>
-                    <p>FULL TIME</p>
-                    <p>SENIOR</p>
-                </div>
-            </div>
-            <div class="card-empleos huli">
-                <div class="card-header-empleos">
-                    <img src="{% static '../../static/home/images/Empresa(7).png' %}" alt="logo-huli">
-                    <div class="card-header-title">
-                        <h3>HULI</h3>
-                        <h4>Ingeniero de Software Frontend</h4>
-                    </div>
-                </div>
-                <div class="card-description">
-                    <p>Huli es uno de los startup de mayor crecimiento en Costa Rica, nos dedicamos a crear soluciones que conectan pacientes y proveedores de salud. Con oficinas en Costa Rica y...</p>
-                </div>
-                <div class="tags">
-                    <p>COSTA RICA</p>
-                    <p>HIBRIDO</p>
-                    <p>FULL TIME</p>
-                    <p>SEMI-SENIOR</p>
-                </div>
-            </div>
-        </div>
-        <a href="{% url 'home:login' %}">Ver más</a>
-    </div>
-
     <!-- Perfiles -->
     <div id="perfiles">
         <h2>Casos de éxito</h2>
@@ -272,7 +210,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Id eum cum distinctio suscipit incidunt saepe fugiat, ullam quis itaque, sunt quo hic quisquam fuga inventore assumenda porro vitae molestias veniam..."</p>
                 </div>
-                <a href="{% url 'home:login' %}">Ver el perfil de Camila</a>
+                <a href="{% url 'account_login' %}">Ver el perfil de Camila</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -282,7 +220,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim placeat sed iusto iste fuga assumenda sapiente, cumque molestiae nesciunt sequi voluptatum inventore. Corrupti assumenda eius, ex modi et magnam quidem..."</p>
                 </div>
-                <a href="{% url 'home:login' %}">Ver el perfil de Rodrigo</a>
+                <a href="{% url 'account_login' %}">Ver el perfil de Rodrigo</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -292,7 +230,7 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero ratione beatae molestias. Architecto nemo reprehenderit praesentium accusantium inventore ex voluptatem alias. Quos adipisci ullam ipsum libero in quaerat"</p>
                 </div>
-                <a href="{% url 'home:login' %}">Ver el perfil de Marcela</a>
+                <a href="{% url 'account_login' %}">Ver el perfil de Marcela</a>
             </div>
             <div class="card-casos-exito">
                 <div class="card-header-perfiles">
@@ -302,7 +240,54 @@ TODO: toastr {% endcomment %}
                 <div class="card-description-perfiles">
                     <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, provident! Exercitationem, deserunt veritatis minima quia voluptatem quos nihil quisquam numquam libero qui ipsa itaque quas ex perferendis"</p>
                 </div>
-                <a href="{% url 'home:login' %}">Ver el perfil de Agustín</a>
+                <a href="{% url 'account_login' %}">Ver el perfil de Agustín</a>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    <div class="container m-a">
+        <div class="container-main m-a">
+            <div class="main-flex">
+                <div class="body">
+                    <h1>Te ayudamos a buscar el empleo o candidato ideal.</h1>
+                    <p>Somos una plataforma totalmente gratuita que cuenta con diferentes ofertas laborales para que te
+                        puedas
+                        postular en unos pocos minutos. Tu perfil va a ser visto por empleadores de grandes empresas que
+                        están
+                        buscando al próximo talento que se una a ellos. <span class="span">¡Tu futuro trabajo te está
+                            esperando!</span></p>
+                            
+                            <a href="{% url 'account_signup' %}" class="btn-secondary">Busco empleo</a>
+                            <a href="{% url 'home:register-company' %}" class="btn-secondary">Ofrezco empleo</a>
+
+                            <div class="info flex flex-j-content-space-b">
+                                <div class="users">
+                                    <h3 class="t-c">Profesionales</h3>
+                                    <div class="sections flex flex-j-content-c flex-wrap">
+                                        <div>Diseñador UI/UX</div>
+                                <div>Programador web</div>
+                                <div>Analista de sistemas</div>
+                                <div>Comunity manager</div>
+                                <div>DevOps</div>
+                                <div>Qa Tester</div>
+                            </div>
+                        </div>
+                        <div class="employeers">
+                            <h3 class="t-c">Empresas</h3>
+                            <div class="emp flex flex-j-content-c flex-wrap">
+                                <img src="{% static '../static/home/images/empresa.png' %}" alt="MercadoLibre">
+                                <img src="{% static '../static/home/images/empresa(1).png' %}" alt="Globant">
+                                <img src="{% static '../static/home/images/empresa(2).png' %}" alt="Link">
+                                <img src="{% static '../static/home/images/empresa(3).png' %}" alt="Accenture">
+                                <img src="{% static '../static/home/images/empresa(4).png' %}" alt="Santander">
+                                <img src="{% static '../static/home/images/empresa(5).png' %}" alt="Uala">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                </div>
             </div>
         </div>
     </div>
