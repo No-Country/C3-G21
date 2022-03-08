@@ -1,6 +1,7 @@
 {% extends './base.html' %}
 {% load static %}
-{% block title %} Registrarse - TechJobs {% endblock %}
+
+{% block title %} Registro - TechJobs {% endblock %}
 
 {% block content %}
     <!-- Barra de navegación, Paola -->
@@ -13,20 +14,12 @@
         </div>
         <div id="crear-cuenta">
             <a href="{% url 'home:faq' %}">Preguntas frecuentes</a>
-            <a href="{% url 'home:login' %}">Iniciar Sesión</a>
+            <a href="{% url 'account_login' %}">Iniciar Sesión</a>
         </div>
     </div>
     <!-- end Barra de navegación -->
 
-            <!-- Mensajes -->
-            {% if messages %}
-            {% for message in messages %}
-                <div>
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-
+    <!-- Main container -->
     <div class="container m-a">
         <div class="container-main m-a">
             <div class="main-flex">
@@ -36,29 +29,22 @@
                 </div>
 
                 <!-- Form de registro -->
-                <div class="form">
+                <div class="form form-user">
                     <div class="form-body">
                         <form action="" method="post" >
                             {% csrf_token %}
-                            <div class="flex flex-dir-col">
-                                <p>¿Con cuál te identificás?</p>
-                                <label for="home">Busco empleo</label>
-                                <input type="radio" id="home" name="home-type" value="home">
-                                <label for="company">Soy empleador</label>
-                                <input type="radio" id="company" name="home-type" value="company">
-
-                                {{ form.as_p }}
-
-                            </div>
+                            {{ form_company.as_p | crispy }}
                             <div class="flex flex-dir-col">
                                 <button class="btn-main" type="submit">Crear cuenta</button>
-                                <a href="{% url 'home:index' %}">Volver</a>
+                                <a href="{% url 'home:index' %}">Volver al Home</a>
                             </div>
                         </form>
                     </div>
                 </div>
+                <!-- end Form de registro -->
             </div>
         </div>
     </div>
+    <!-- end Main container -->
 
-    {% endblock %}
+{% endblock %}

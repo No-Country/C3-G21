@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+{% load static tailwind_tags %}
+{% load tailwind_filters %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Mis estilos -->
+    <link rel="icon" href="{% static 'home/images/briefcase-solid.svg' %}">
+    <!-- Tailwind -->
+    {% tailwind_css %}
+    {% block extra_head %}
+    {% endblock %}
+    
+    <title>{% block head_title %} {% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+
+
+        {% block content %}
+        
+        {% endblock %}
+
+    {% endblock %}
+
+    {% block extra_body %}
+    {% endblock %}
+
+    </body>
+</html>

@@ -11,10 +11,17 @@
         <button type="submit"><img id="lupa"
                 src="https://img.icons8.com/windows/50/000000/search--v2.png" /></button>
     </div>
+{% if user.is_authenticated %}
+<div id="crear-cuenta">
+    <a href="{% url 'home:index' %}">Home</a>
+    <a href="{% url 'home:logout' %}">Cerrar sesión</a>
+</div>
+{% else %}
     <div id="crear-cuenta">
         <a href="{% url 'home:index' %}">Home</a>
-        <a href="{% url 'home:register' %}">Crear cuenta</a>
+        <a href="{% url 'account_login' %}">Iniciar sesión</a>
     </div>
+    {% endif %}
 </div>
 
 <!-- end Barra de navegación -->
