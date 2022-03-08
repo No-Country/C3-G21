@@ -17,56 +17,52 @@
 <form class="form-horizontal dark:text-dark-txt" method="post"  enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <div class="space-y-1 text-center">
-              <div class="flex text-sm text-gray-600">
-                
-              </div>
+        <div class="space-y-1 text-center">
+            <div class="flex text-sm text-gray-600">
+            
             </div>
-          </div>
+        </div>
+    </div>
     
           <!--Profile Picture-->
             <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
-            <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-                Foto
-            </label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-                <div class="flex items-center">
-                <span class="mr-4 h-18 w-18 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
-                    <img src="{{user.profile.avatar.url}}" alt="avatar">
-                </span>
-                {{form.avatar}}
-                </div>
-            </div>
-            </div>
-            <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
                 <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-                    Subir CV
+                    Logo
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="flex items-center">
-                    <span class="mr-4 h-18 w-18 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
-                        <img src="https://store-images.s-microsoft.com/image/apps.51661.13839582470366861.96bdfafe-61a3-4a2f-bad2-4d278a101ff2.7bd35162-fbb9-439f-9be3-db5600161a82?mode=scale&q=90&h=270&w=270&background=%2370727d" alt="avatar">
-                    </span>
-                    {{form.cv}}
+                        <span class="mr-4 h-18 w-18 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
+                            <img src="{{user.profile.avatar.url}}" alt="avatar">
+                        </span>
+                        {{form.logo}}
                     </div>
                 </div>
             </div>
+                
+            <div class="mt-6">    
+                <label for="bio" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                    Nombre de la compañía
+                </label>
+                {{form.company_name}}
+                <label for="bio" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                    Bio
+                </label>
+                {{form.bio}}
     
-            <div class="mt-4">    
-            <label for="bio" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-                Bio
-            </label>
-            {{form.bio}}
+                <label for="city" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                Ubicación
+                </label>
+                {{form.location}}
+
+                <label for="url" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                    Teléfono
+                </label>
+                {{form.phone}}
     
-            <label for="city" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-            Ubicación: Ciudad, País
-            </label>
-            {{form.location}}
-    
-            <label for="url" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-            Web
-            </label>
-            {{form.url}}
+                <label for="url" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                Web
+                </label>
+                {{form.web}}
             </div>
     
              <div class="control-group">

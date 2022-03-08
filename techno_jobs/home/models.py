@@ -1,6 +1,6 @@
 from django.db import models
 # from django.forms import ModelForm
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 import os
@@ -10,20 +10,48 @@ from django.db.models.signals import post_save # una señal, lo que ocurrira cua
 from .constants import COUNTRY_CHOICES, MODALITY_CHOICES
 
 # Create your models here.
-class Company(models.Model):
-    pass
-    # is_company = models.BooleanField(default=True)
-    # username = models.EmailField("Email", unique=True)
-    # company_name = models.CharField("Nombre de la compañía", max_length=150, unique=True)
-    # # email = models.EmailField("Email", unique=True)
-    # password1 = models.CharField("Contraseña", max_length=20)
-    # password2 = models.CharField("Repetir contraseña", max_length=20)
-    # location = models.CharField("Ubicación", choices=COUNTRY_CHOICES, max_length=50)
-    # phone = models.IntegerField("Teléfono", default=0, unique=True)
-    # web = models.CharField("Página web", max_length=150, default='example.com', blank=True, unique=True)
+class User(AbstractUser):
+    id = models.AutoField(primary_key=True)
 
-    # def __str__(self) -> str:
-    #     return f'{self.id}: {self.company_name}'
+# ---- Company ----
+class CompanyProfile(models.Model):
+    user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE, related_name='company_profile')
+    is_company = models.BooleanField(default=True)
+
+    # Company Info
+    logo = models.ImageField(default='company/company-default-logo.png', upload_to='user_directory_path_logo')
+    company_name = models.CharField(max_length=150, unique=True)
+    bio = models.TextField(max_length=300, null=True, blank=True)
+    date_created = models.DateField(auto_now_add=True)
+    location = models.CharField(max_length=50, null=True, blank=True)
+    phone = models.CharField(max_length=15, null=True, blank=True)
+    web = models.CharField(max_length=150, blank=True, unique=True)
+
+    def __str__(self) -> str:
+        return self.company_name
+
+# cuando la compañia se registra
+def create_company_profile(sender, instance, created, **kwargs):
+    if created:
+        CompanyProfile.objects.create(user=instance)
+
+def save_company_profile(sender, instance, created, **kwargs):
+    instance.profile.save()
+
+# crear el perfil del usuario
+post_save.connect(create_company_profile, sender=User)
+# guardar el perfil creado por el usuario
+post_save.connect(save_company_profile, sender=User)
+
+# upload directory
+# instance: usuario
+# filename: archivo que estamos subiendo
+def user_directory_path_logo(instance, filename):
+    logo_picture_name = '/company/{0}/logo.jpg'.format(instance.user.username)
+    full_path = os.path.join(settings.MEDIA_ROOT, logo_picture_name)
+    if os.path.exists(full_path):
+        os.remove(full_path)
+    return logo_picture_name
     
 class Offer(models.Model):
     pass
@@ -43,13 +71,19 @@ class Offer(models.Model):
 # instance: usuario
 # filename: archivo que estamos subiendo
 def user_directory_path_profile(instance, filename):
-    profile_picture_name = 'users/{0}/profile.jpg'.format(instance.user.username)
+    profile_picture_name = '/users/{0}/profile.jpg'.format(instance.user.username)
     full_path = os.path.join(settings.MEDIA_ROOT, profile_picture_name)
     if os.path.exists(full_path):
         os.remove(full_path)
     return profile_picture_name
-class User(AbstractUser):
-    dni = models.IntegerField("DNI", default=0)
+
+# upload cv
+def user_directory_path_profile_cv(instance, filename):
+    profile_cv_name = 'users/{0}/cv.pdf'.format(instance.user.username)
+    full_path = os.path.join(settings.MEDIA_ROOT, profile_cv_name)
+    if os.path.exists(full_path):
+        os.remove(full_path)
+    return profile_cv_name
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE, related_name='profile')
@@ -61,12 +95,11 @@ class UserProfile(models.Model):
     date_created = models.DateField(auto_now_add=True)
     url = models.CharField(max_length=100, null=True, blank=True)
     location = models.CharField(max_length=50, null=True, blank=True)
-    # cv = models.FileField()
+    cv = models.FileField(blank=True, upload_to='user_directory_path_profile_cv')
     job_offer_id = models.ManyToManyField(Offer)
 
     def __str__(self) -> str:
         return self.user.username
-
 
 # cuando el usuario se registra
 def create_user_profile(sender, instance, created, **kwargs):

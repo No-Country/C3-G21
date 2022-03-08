@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
-{% block title %} TechJobs - Portal de empleo {% endblock %}
+{% block head_title %} TechJobs - Portal de empleo {% endblock %}
 
 {% block content %}
 
@@ -24,7 +24,7 @@
         {% if user.is_authenticated %}
         {% comment %} # FIXME: arreglar CSS y funcionalidad
         # TODO: toastr {% endcomment %}
-        <a href="{% url 'home:user-profile' user.username %}">Mi perfil</a>
+        <a href="{% url 'home:user-profile' user.id %}">Mi perfil</a>
         {% comment %} FIXME: linkear a la view {% endcomment %}
         <a href="{% url 'home:logout' %}">Cerrar sesión</a>
         {% else %}
@@ -259,7 +259,7 @@ TODO: toastr {% endcomment %}
                             esperando!</span></p>
                             
                             <a href="{% url 'account_signup' %}" class="btn-secondary">Busco empleo</a>
-                            <a href="{% url 'home:register-company' %}" class="btn-secondary">Ofrezco empleo</a>
+                            <a href="{% url 'account_signup' %}" class="btn-secondary">Ofrezco empleo</a>
 
                             <div class="info flex flex-j-content-space-b">
                                 <div class="users">

@@ -1,5 +1,4 @@
 from django.urls import path
-from django.contrib.auth.views import LoginView
 
 from . import views
 
@@ -7,13 +6,14 @@ app_name = 'home'
 urlpatterns = [
     path('', views.home, name='index'),
     path('faq/', views.faq, name='faq'),
-    # path('register-user/', views.register_user, name='register-user'),
-    path('register-company/', views.register_company, name='register-company'),
-    # path('login/', LoginView.as_view(template_name='home/login.html'), name='login'),
-    # path('user-profile/', views.user_profile, name='user-profile'),
-    path('user-profile/<username>', views.UserProfileView.as_view(), name='user-profile'),
-    path('edit-profile/', views.EditUserProfile, name='edit-profile'),
-    path('company-profile/', views.company_profile, name='company-profile'),
+    path('edit-user/<pk>', views.EditUser.as_view(), name='edit-user'),
     path('logout/', views.logout_view, name='logout'),
 
+    # --- user ---
+    path('<pk>', views.UserProfileView.as_view(), name='user-profile'),
+    path('edit-profile/<pk>', views.EditUserProfile.as_view(), name='edit-profile'),
+
+    # --- company ---
+    path('<pk>', views.CompanyProfileView.as_view(), name='company-user-profile'),
+    path('edit-company-profile/<pk>', views.EditCompanyProfile.as_view(), name='edit-company-profile'),
 ]
