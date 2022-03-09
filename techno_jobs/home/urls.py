@@ -12,8 +12,11 @@ urlpatterns = [
     # --- user ---
     path('<pk>', views.UserProfileView.as_view(), name='user-profile'),
     path('edit-profile/<pk>', views.EditUserProfile.as_view(), name='edit-profile'),
+    path('delete/<pk>', views.DeleteUser.as_view(), name='delete'),
 
     # --- company ---
-    path('<pk>', views.CompanyProfileView.as_view(), name='company-user-profile'),
+    path('company-signup/', views.create_company, name='create-company'),
+    path('company/<pk>', views.CompanyProfileView.as_view(), name='company-user-profile'),
     path('edit-company-profile/<pk>', views.EditCompanyProfile.as_view(), name='edit-company-profile'),
+    path('delete-company/<pk>', views.DeleteCompany.as_view(), name='delete-company'),
 ]

@@ -5,4 +5,4 @@ from .models import User, UserProfile, CompanyProfile, Offer
 admin.site.register(User)
 admin.site.register(UserProfile)
 admin.site.register(CompanyProfile)
-admin.site.register(Offer)
+# admin.site.register(Offer)

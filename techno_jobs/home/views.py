@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group
 from django.urls import reverse_lazy
 from django.views.generic import View
@@ -8,11 +8,11 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 
 from .models import *
-from .forms import EditUserForm, EditUserProfileForm, EditCompanyProfileForm
+from .forms import EditUserForm, EditUserProfileForm, EditCompanyProfileForm, CreateCompanyForm
 
 # Create your views here.
 User = get_user_model() # lo usamos en el UserProfileView
@@ -62,17 +62,43 @@ class EditUserProfile(UpdateView):
         user = profile.user
         return reverse_lazy('home:user-profile', kwargs={ 'pk': user.id })
 
+class DeleteUser(DeleteView):
+    model = User
+    template_name = 'home/delete-user.html'
+    success_url = reverse_lazy('home:index')
+
 # ----- Company -----
+# class CreateCompanyProfile(CreateView):
+#     model = CompanyProfile
+#     form_class = CreateCompanyForm
+#     template_name = 'home/company-signup.html'
+#     success_url = reverse_lazy('home:index')
+
+def create_company(request):
+    if request.method == 'POST':
+        form_company = CreateCompanyForm(request.POST, request.FILES)
+        if form_company.is_valid():
+            form_company.save()
+
+            username = form_company.cleaned_data['username']
+            username = form_company.cleaned_data['email']
+            user = authenticate(username=username, password=form_company.cleaned_data['password1'])
+            login(request, user)
+            return redirect(to='home:company-profile')
+    else: 
+        form_company = CreateCompanyForm()
+    context = { 'form_company': form_company }
+    print(context)
+    return render(request, 'home/company-signup.html', context)
+
 class CompanyProfileView(DetailView):
     model = CompanyProfile
 
     def get(self, request, pk, *args, **kwargs):
-        user = get_object_or_404(User, pk=pk)
-        profile = CompanyProfile.objects.get(user=user)
+        user = get_object_or_404(CompanyProfile, pk=pk)
 
         context = {
             'user': user,
-            'company-profile': profile,
         }
         return render(request, 'home/companyprofile_detail.html', context)
 
@@ -88,6 +114,10 @@ class EditCompanyProfile(UpdateView):
         user = profile.user
         return reverse_lazy('home:edit-company-profile', kwargs={ 'pk': user.id })
 
+class DeleteCompany(DeleteView):
+    model = CompanyProfile
+    template_name = 'home/delete-company.html'
+    success_url = reverse_lazy('home:index')
 
 def logout_view(request):
     logout(request)

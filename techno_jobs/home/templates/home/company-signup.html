@@ -3,11 +3,10 @@
 {% load static tailwind_tags %}
 
 {% load i18n %}
-{% load account socialaccount %}
 
 {% load tailwind_filters %}
 
-{% block head_title %} Iniciar sesión - TechJobs {% endblock %}
+{% block head_title %} Registro User - TechJobs {% endblock %}
 
 {% block extra_head %}
   <!-- Tailwind -->
@@ -15,8 +14,8 @@
 {% endblock %}
 
 {% block content %}
-  
-  <!-- Background -->
+
+<!-- Background -->
 <div class="background">
   <div class="back-flex">
       <div class="div1-login"></div>
@@ -35,7 +34,7 @@
   </div>
   <div id="crear-cuenta">
       <a href="{% url 'home:faq' %}">Preguntas frecuentes</a>
-      <a href="{% url 'account_signup' %}">Crear cuenta</a>
+      <a href="{% url 'account_login' %}">Iniciar sesión</a>
     </div>
 </div>
 <!-- end Barra de navegación -->
@@ -46,24 +45,20 @@
     <div class="max-w-md w-full space-y-8">
       <div>
         <img class="mx-auto h-12 w-auto" src="{% static 'home/images/Logo.svg' %}" alt="logo">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Inicia sesión en tu cuenta</h2>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Regístrate</h2>
         <p class="mt-2 text-center text-xl text-gray-600">
-          O registrate
-          <a href="{% url 'account_signup' %}" class="font-medium text-blue-600 hover:text-orange-500"> como User</a> o
-          <a href="{% url 'home:create-company' %}" class="font-medium text-blue-600 hover:text-orange-500"> como Empresa</a>
+          O
+          <a href="{% url 'account_login' %}" class="ffont-medium text-blue-600 hover:text-orange-500"> inicia sesión en tu cuenta</a>
         </p>
       </div>
-      <form class="mt-8 space-y-8" action="{% url 'account_login' %}" method="POST">
+      {% comment %} class="signup" id="signup_form" {% endcomment %}
+      <form method="post" action="{% url 'home:create-company' %}">
       {% csrf_token %}
         <div class="rounded-md shadow-sm -space-y-px">
           <div class="">
-            {{ form | crispy }}
+            {{ form_company | crispy }}
           </div>
         </div>
-        
-          <div class="text-xl flex justify-center">
-            <a href="{% url 'account_reset_password' %}" class="font-medium text-blue-600 hover:text-orange-500"> Olvidaste tu contraseña? </a>
-          </div>
 
         <div>
           <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-xl font-medium rounded-md text-white bg-blue-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
@@ -73,7 +68,7 @@
                 <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
               </svg>
             </span>
-            Ingresar
+            Registrarse
           </button>
         </div>
           <div class="text-xl flex justify-center">

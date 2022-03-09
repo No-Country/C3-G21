@@ -21,10 +21,16 @@
     </div>
     <div id="crear-cuenta">
         <a href="{% url 'home:faq' %}">Preguntas frecuentes</a>
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user.profile.is_professional %}
         {% comment %} # FIXME: arreglar CSS y funcionalidad
         # TODO: toastr {% endcomment %}
-        <a href="{% url 'home:user-profile' user.id %}">Mi perfil</a>
+        <a href="{% url 'home:user-profile' user.id %}">{{ user.username | title }}</a>
+        {% comment %} FIXME: linkear a la view {% endcomment %}
+        <a href="{% url 'home:logout' %}">Cerrar sesión</a>
+        {% elif user.is_authenticated and user.is_company %}
+        {% comment %} # FIXME: arreglar CSS y funcionalidad
+        # TODO: toastr {% endcomment %}
+        <a href="{% url 'home:company-user-profile' user.id %}">{{ user.username | title }}</a>
         {% comment %} FIXME: linkear a la view {% endcomment %}
         <a href="{% url 'home:logout' %}">Cerrar sesión</a>
         {% else %}
@@ -259,7 +265,7 @@ TODO: toastr {% endcomment %}
                             esperando!</span></p>
                             
                             <a href="{% url 'account_signup' %}" class="btn-secondary">Busco empleo</a>
-                            <a href="{% url 'account_signup' %}" class="btn-secondary">Ofrezco empleo</a>
+                            <a href="{% url 'home:create-company' %}" class="btn-secondary">Ofrezco empleo</a>
 
                             <div class="info flex flex-j-content-space-b">
                                 <div class="users">

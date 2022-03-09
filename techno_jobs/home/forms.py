@@ -31,6 +31,29 @@ class EditUserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('avatar', 'cv', 'location', 'url', 'bio')
 
+class CreateCompanyForm(UserCreationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md',
+            }), required=True
+    )
+    email = forms.EmailField()
+    # password = forms.CharField(widget=forms.PasswordInput)
+    # password2 = forms.CharField(widget=forms.PasswordInput)
+
+    # def clean(self):
+    #     cleaned_data = super(CompanyProfile, self).clean()
+    #     password = cleaned_data.get('password')
+    #     password2 = cleaned_data.get('password2')
+    #     if password and password2:
+    #             if password != password2:
+    #                 raise forms.ValidationError('Password mismatch')
+    #     return password2
+    
+    class Meta:
+        model = CompanyProfile
+        fields = ['username', 'email']
+
 class EditCompanyProfileForm(forms.ModelForm):
     logo = forms.ImageField(label='Logo',required=False, widget=forms.FileInput)
     company_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'max-w-lg block w-full shadow-sm dark:bg-dark-third dark:text-dark-txt dark:border-dark-third focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md'}), max_length=25, required=False)

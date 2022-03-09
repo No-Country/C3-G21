@@ -37,7 +37,7 @@
 
                     <div x-data="{ open: false }" @keydown.window.escape="open = false" class=" mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                         <div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-                            {% if user.is_authenticated and user == company-profile.user %}
+                            {% if user.is_authenticated and user.is_company %}
                             <a href="{% url 'home:edit-company-profile' user.id %}" class="inline-flex justify-center px-4 py-2 border border-transparent text-xl font-medium rounded-md text-white bg-blue-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
                                 <span>Edit Profile</span>
                             </a>
@@ -49,7 +49,7 @@
 
                 <div class=" sm:block  mt-6 min-w-0 flex-1">
                     <h1 class="text-2xl font-bold dark:text-dark-txt text-gray-900 truncate">
-                    {{company-profile.user.username}}
+                    {{company-profile.username}}
                     </h1>
                 </div>
 
@@ -116,7 +116,7 @@
 
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Email</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.email }}</dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ company-profile.email }}</dd>
                         </div>
                     </dl>
                 </div>
