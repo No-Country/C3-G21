@@ -25,14 +25,13 @@
     <!--USER PROFILE-->
     <div class="md:grid md:gap-6 relative flex space-x-22 pt-4">
     <div class="mt-5 md:mt-0 ">
-        <div>
             <!--User info-->
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
                     <!--profile picture-->
                     <div class="flex">
                         <img class=" h-24 w-24 rounded-full ring-4 dark:ring-dark-second ring-white sm:h-32 sm:w-32 hover:bg-gray-100"
-                        src="{{profile.avatar.url}}" alt="{{profile.user.username}} Profile Picture">
+                        src="{{ profile.avatar.url }}" alt="{{ profile.user.username }} Profile Picture">
                     </div>
 
                     <div x-data="{ open: false }" @keydown.window.escape="open = false" class=" mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
@@ -90,29 +89,26 @@
 
             </div>
         </div>
-
-            {% comment %} FIXME: estilos {% endcomment %}
-            <div class="body">
-                <h1>Bienvenido a tu perfil de usuario!</h1>
-                <p>Aquí podrás agregar datos a tu perfil y modificar los existentes.</p>
-            </div>
         
             <!-- FIXME: agregar user.is_company -->
             {% if user.is_authenticated %}
             <!-- Info para company -->
-            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="mx-5 bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">Información</h3>
-            </div>
-            <div class="border-t border-gray-200">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Información</h3>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Aquí podrás ver y editar tus datos</p>
+                </div>
+                <div class="border-t border-gray-200">
                     <dl>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Nombre</dt>
-                            <!-- Heroicon name: pencil -->
-                            <a href="{% url 'home:edit-user' user.id %}"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                            </svg></a>
-                            <span class="ml-2 flex-1 w-0 truncate"> {{ user.first_name}} {{ user.last_name }} </span>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="flex text-sm font-medium text-gray-500">Nombre</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><!-- Heroicon name: pencil -->
+                                <a href="{% url 'home:edit-user' user.id %}"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                </svg></a>
+                                <span class="ml-2 flex-1 w-0 truncate"> {{ user.first_name}} {{ user.last_name }} </span>
+                            </dd>
+                        </div> 
                         {% comment %} FIXME: agregar {{job.title}} en un <a> para que los lleve a la oferta {% endcomment %}
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Application for</dt>
@@ -122,6 +118,12 @@
                             <dt class="text-sm font-medium text-gray-500">Email</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.email }}</dd>
                         </div>
+                        {% comment %} <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Trabajos a los que aplicaste</dt>
+                            {% for job in user.profile.job_offer_id %}
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.profile.job_offer_id }}</dd>
+                            {% endfor %}
+                        </div> {% endcomment %}
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 
                             {% if user.is_authenticated and user.is_company and user != profile.user %}
@@ -170,9 +172,11 @@
             </div>
             {% endif %}
         </div>
-        <a href="{% url 'home:index' %}">Volver al home</a>
-        <a href="{% url 'home:logout' %}" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cerrar sesión</a>
-        <a href="{% url 'home:delete' user.id %}" class="mt-10 w-full bg-red-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Eliminar perfil</a>
+        <div class="grid-rows-3 justify-self-center items-center mx-5">
+            <a href="{% url 'home:index' %}" class="mt-5 w-full bg-blue-400 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Volver al home</a>
+            <a href="{% url 'home:logout' %}" class="mt-5 w-full bg-blue-400 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Cerrar sesión</a>
+            <a href="{% url 'home:delete' user.id %}" class="mt-5 w-full bg-red-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Eliminar perfil</a>
+        </div>
     </div>
 </main>
 

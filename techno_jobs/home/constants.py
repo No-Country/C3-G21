@@ -185,5 +185,7 @@ COUNTRY_CHOICES = (
 
 MODALITY_CHOICES = (
     ('Presencial', 'Presencial'),
+    ('Full - Time', 'Full - Time'),
+    ('Part - Time', 'Part - Time'),
     ('Remoto', 'Remoto'),
 )

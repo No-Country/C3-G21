@@ -23,9 +23,9 @@ class EditUserForm(forms.ModelForm):
 class EditUserProfileForm(forms.ModelForm):
     avatar = forms.ImageField(label='Foto de perfil',required=False, widget=forms.FileInput)
     cv = forms.FileField(label='Subir CV',required=False, widget=forms.FileInput)
-    location = forms.CharField(widget=forms.TextInput(attrs={'class': 'max-w-lg block w-full shadow-sm dark:bg-dark-third dark:text-dark-txt dark:border-dark-third focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md'}), max_length=25, required=False)
-    url = forms.URLField(label='Website URL', widget=forms.TextInput(attrs={'class': 'max-w-lg block w-full shadow-sm dark:bg-dark-third dark:text-dark-txt dark:border-dark-third focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md'}), max_length=60, required=False)
-    bio = forms.CharField(widget=forms.TextInput(attrs={'class': 'max-w-lg block w-full shadow-sm dark:bg-dark-third dark:text-dark-txt dark:border-dark-third focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md'}), max_length=260, required=False)
+    location = forms.CharField(widget=forms.TextInput, max_length=25, required=False)
+    url = forms.URLField(label='Website URL', widget=forms.TextInput, max_length=60, required=False)
+    bio = forms.CharField(widget=forms.TextInput, max_length=260, required=False)
 
     class Meta:
         model = UserProfile

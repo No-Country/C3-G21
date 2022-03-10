@@ -9,6 +9,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 
 from .models import *
@@ -19,6 +20,7 @@ User = get_user_model() # lo usamos en el UserProfileView
 
 def home(request):
     return render(request, 'home/index.html')
+
 
 def faq(request):
     return render(request, 'home/faq.html')
@@ -118,6 +120,37 @@ class DeleteCompany(DeleteView):
     model = CompanyProfile
     template_name = 'home/delete-company.html'
     success_url = reverse_lazy('home:index')
+
+
+# ---- Offer ----
+class JobsView(ListView):
+    model = Offer
+    template_name = 'home/jobs.html'
+
+class OfferView(DetailView):
+    model = Offer
+
+    def get(self, request, pk, *args, **kwargs):
+        job = get_object_or_404(Offer, pk=pk)
+
+        context = {
+            'job': job,
+        }
+        return render(request, 'home/offer.html', context)
+
+def apply(request, jobid):
+    user = User
+    profile = user.profile
+    print(f'Job: {user.profile.job_offer_id} ID')
+    job = Offer.objects.get(pk=jobid)
+    print(job.id)
+    profile.job_offer_id.add(job)
+
+    ctx = {
+        'job': job,
+        'user': user
+    }
+    return render(request, 'home/apply.html', ctx)
 
 def logout_view(request):
     logout(request)

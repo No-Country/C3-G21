@@ -1,8 +1,19 @@
 {% extends './base.html' %}
 {% load static %}
-{% block head_title %} TechJobs - Portal de empleo {% endblock %}
+{% load static tailwind_tags %}
 
-{% block content %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% load tailwind_filters %}
+{% block head_title %} Empleos - TechJobs {% endblock %}
+
+<!-- Tailwind -->
+{% block extra_head %}
+{% tailwind_css %}
+{% endblock %}
+
+{% block body %}
 
 <!-- background -->
 <div class="background">
@@ -34,52 +45,47 @@
 </div>
 <!-- end Barra de navegación -->
 
-<div class="container m-a">
-    <div class="container-main m-a">
-        <div class="main-flex">
-            <div class="body">
-                <h1>Te ayudamos a buscar el empleo o candidato ideal.</h1>
-                <p>Somos una plataforma totalmente gratuita que cuenta con diferentes ofertas laborales para que te
-                    puedas
-                    postular en unos pocos minutos. Tu perfil va a ser visto por empleadores de grandes empresas que
-                    están
-                    buscando al próximo talento que se una a ellos. <span class="span">¡Tu futuro trabajo te está
-                        esperando!</span></p>
-                        
-                        <a href="{% url 'account_signup' %}" class="btn-secondary">Busco empleo</a>
-                        <a href="{% url 'account_signup' %}" class="btn-secondary">Ofrezco empleo</a>
+{% block content %}
 
-                        <div class="info flex flex-j-content-space-b">
-                            <div class="users">
-                                <h3 class="t-c">Profesionales</h3>
-                                <div class="sections flex flex-j-content-c flex-wrap">
-                                    <div>Diseñador UI/UX</div>
-                            <div>Programador web</div>
-                            <div>Analista de sistemas</div>
-                            <div>Comunity manager</div>
-                            <div>DevOps</div>
-                            <div>Qa Tester</div>
+{% if user.is_authenticated %}
+
+{% comment %} <div id="empleos"> {% endcomment %}
+    {% comment %} <h2>Puestos que te pueden interesar...</h2> {% endcomment %}
+    {% comment %} # TODO: ficha para aplicar a los trabajos {% endcomment %}
+    {% comment %} <div id="cards-empleos"> {% endcomment %}
+        <div class="bg-inherit">
+            <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Puestos que te pueden interesar...</h2>
+                <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {% for job in object_list %}
+                    <div class="group relative">
+                        <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+                                <img src="{{ job.logo.url }}" alt="Logo" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+                            </div>
+                            <div class="mt-4 flex justify-between">
+                                <div>
+                                    <h3 class="text-sm text-gray-700">
+                                        <a href="{% url 'home:job-view' job.id %}">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        {{ job.title }}
+                                        </a>
+                                    </h3>
+                                    <p class="mt-1 text-sm text-gray-500">{{ job.company }}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="employeers">
-                        <h3 class="t-c">Empresas</h3>
-                        <div class="emp flex flex-j-content-c flex-wrap">
-                            <img src="{% static '../static/home/images/empresa.png' %}" alt="MercadoLibre">
-                            <img src="{% static '../static/home/images/empresa(1).png' %}" alt="Globant">
-                            <img src="{% static '../static/home/images/empresa(2).png' %}" alt="Link">
-                            <img src="{% static '../static/home/images/empresa(3).png' %}" alt="Accenture">
-                            <img src="{% static '../static/home/images/empresa(4).png' %}" alt="Santander">
-                            <img src="{% static '../static/home/images/empresa(5).png' %}" alt="Uala">
-                        </div>
+                        
+                        {% endfor %}
+                        <!-- More products... -->
                     </div>
                 </div>
             </div>
-            <div class="form">
-            </div>
-        </div>
-    </div>
-</div>
+        </div>  
 
+    {% comment %} </div>
+</div> {% endcomment %}
+
+{% else %}
 {% comment %} FIXME: arreglar CSS y funcionalidad, ofertas de trabajo si el user es user o perfiles si es empresa
 TODO: toastr {% endcomment %}
 <!-- FIXME: Puestos hardcoded -->
@@ -87,7 +93,9 @@ TODO: toastr {% endcomment %}
     <h2>Puestos que te pueden interesar...</h2>
     {% comment %} # TODO: ficha para aplicar a los trabajos {% endcomment %}
     <div id="cards-empleos">
+
         <div class="card-empleos pedidosya">
+            <a href="{% url 'home:job' %}">
                 <div class="card-header-empleos">
                     <img src="{% static '../../static/home/images/Empresa(6).png' %}" alt="logo-pedidos-ya">
                     <div class="card-header-title">
@@ -104,7 +112,9 @@ TODO: toastr {% endcomment %}
                     <p>FULL TIME</p>
                     <p>SENIOR</p>
                 </div>
+            </a>
         </div>
+
         <div class="card-empleos huli">
             <div class="card-header-empleos">
                 <img src="{% static '../../static/home/images/Empresa(7).png' %}" alt="logo-huli">
@@ -232,58 +242,9 @@ TODO: toastr {% endcomment %}
             </div>
         </div>
     </div>
-    {% if user.is_authenticated %}
-        <a href="{% url 'home:jobs' %}">Ver más</a>
-    {% else %}
-        <a href="{% url 'account_login' %}">Ver más</a>
-    {% endif %}
 </div>
-    
-    <!-- Perfiles -->
-    <div id="perfiles">
-        <h2>Casos de éxito</h2>
-        <div id="cards-perfiles">
-            <div class="card-casos-exito">
-                <div class="card-header-perfiles">
-                    <h3>QA Tester</h3>
-                    <img src="{% static '../../static/home/images/Foto.png' %}" alt="foto perfil">
-                </div>
-                <div class="card-description-perfiles">
-                    <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Id eum cum distinctio suscipit incidunt saepe fugiat, ullam quis itaque, sunt quo hic quisquam fuga inventore assumenda porro vitae molestias veniam..."</p>
-                </div>
-                <a href="{% url 'account_login' %}">Ver el perfil de Camila</a>
-            </div>
-            <div class="card-casos-exito">
-                <div class="card-header-perfiles">
-                    <h3>Analista en Sistemas</h3>
-                    <img src="{% static '../../static/home/images/Foto (1).png' %}" alt="foto perfil">
-                </div>
-                <div class="card-description-perfiles">
-                    <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim placeat sed iusto iste fuga assumenda sapiente, cumque molestiae nesciunt sequi voluptatum inventore. Corrupti assumenda eius, ex modi et magnam quidem..."</p>
-                </div>
-                <a href="{% url 'account_login' %}">Ver el perfil de Rodrigo</a>
-            </div>
-            <div class="card-casos-exito">
-                <div class="card-header-perfiles">
-                    <h3>Recursos Humanos</h3>
-                    <img src="{% static '../../static/home/images/Foto (2).png' %}" alt="foto perfil">
-                </div>
-                <div class="card-description-perfiles">
-                    <p>"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero ratione beatae molestias. Architecto nemo reprehenderit praesentium accusantium inventore ex voluptatem alias. Quos adipisci ullam ipsum libero in quaerat"</p>
-                </div>
-                <a href="{% url 'account_login' %}">Ver el perfil de Marcela</a>
-            </div>
-            <div class="card-casos-exito">
-                <div class="card-header-perfiles">
-                    <h3>Programador Backend</h3>
-                    <img src="{% static '../../static/home/images/Foto (3).png' %}" alt="foto perfil">
-                </div>
-                <div class="card-description-perfiles">
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, provident! Exercitationem, deserunt veritatis minima quia voluptatem quos nihil quisquam numquam libero qui ipsa itaque quas ex perferendis"</p>
-                </div>
-                <a href="{% url 'account_login' %}">Ver el perfil de Agustín</a>
-            </div>
-        </div>
-    </div>
+{% endif %}
+
+{% endblock %}
 
 {% endblock %}

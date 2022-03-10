@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% load static %}
+{% load static tailwind_tags %}
+{% load tailwind_filters %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Mis estilos -->
+    <link rel="icon" href="{% static 'home/images/briefcase-solid.svg' %}">
+    <!-- Tailwind -->
+    {% tailwind_css %}
+    {% block extra_head %}
+    {% endblock %}
+    
+    <title>{% block head_title %} Oferta laboral - TechJobs {% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+
+
+        {% block content %}
+        
+<div class="fixed z-10 inset-0 overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="flex min-h-screen text-center md:block md:px-2 lg:px-4" style="font-size: 0">
+
+        <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity md:block" aria-hidden="true"></div>
+        
+        <!-- This element is to trick the browser into centering the modal contents. -->
+        <span class="hidden md:inline-block md:align-middle md:h-screen" aria-hidden="true">&#8203;</span>
+        
+
+        <div class="flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-4xl">
+            <!-- Container -->
+            <div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+                <!-- Botón de cierre -->
+                <a href="{% url 'home:jobs' %}" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8">
+                    <span class="sr-only">Close</span>
+                    <!-- Heroicon name: outline/x -->
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </a>
+                <!-- Contenedor completo -->
+                <div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
+                    <!-- Logo de empresa -->
+                    <div class="aspect-w-2 aspect-h-3 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
+                        <img src="{{ job.logo.url }}" alt="Two each of gray, white, and black shirts arranged on table." class="object-center object-cover">
+                    </div>
+                    <!-- Título y descripción -->
+                    <div class="sm:col-span-8 lg:col-span-7">
+                        <h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">{{ job.title }}</h2>
+    
+                        <section aria-labelledby="information-heading" class="mt-2">
+                            <h3 id="information-heading" class="sr-only">Job description</h3>
+                            <p class="text-xl text-gray-900">{{ job.description }}</p>
+                        </section>
+                    </div>
+                </div>
+            </div>        
+            <div class="grid-rows-2 justify-self-center items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+
+                    <div class="grid grid-cols-4 gap-4 mx-8 justify-self-center items-center">
+                        <!-- Location -->
+                        <div class="mt-2 flex justify-self-center items-center">
+                            <h4 class="sr-only">Location</h4>
+                            <!--
+                                Heroicon name: location-marker
+                                
+                                Active: "text-gray-900", Default: "text-gray-200"
+                            -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <p class="sr-only">location</p>
+                            <p class="ml-3 text-sm font-medium text-blue-600 hover:text-orange-500">{{ job.location }}</p>
+                        </div>
+                        
+                        <!-- Company -->
+                        <div class="mt-2 flex justify-self-center items-center">
+                            <h4 class="sr-only">Company</h4>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                            <p class="sr-only">company</p>
+                            <p class="ml-3 text-sm font-medium text-blue-600 hover:text-orange-500">{{ job.company }}</p>
+                        </div>
+                        
+                        <!-- Modality -->
+                        <div class="mt-2 flex justify-self-center items-center">
+                            <h4 class="sr-only">Modality</h4>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                    </svg>
+                                </div>
+                            <p class="sr-only">modality</p>
+                            <p class="ml-3 text-sm font-medium text-blue-600 hover:text-orange-500">{{ job.modality }}</p>
+                        </div>
+
+                        <!-- Salary -->
+                        <div class="mt-2 flex justify-self-center items-center">
+                            <h4 class="sr-only">Salary</h4>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                            <p class="sr-only">salary</p>
+                            <p class="ml-3 text-sm font-medium text-blue-600 hover:text-orange-500">{{ job.salary }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-rows-2">
+
+                        <a href="{% url 'home:job-apply' jobid=job.id %}" class="mt-6 w-full bg-blue-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">Aplicar</a>
+                        
+                        <!-- Job id -->
+                        <div class="mt-2 flex w-full justify-self-center items-center">
+                            <h4 class="mr-2">Job id</h4>
+                            <div class="flex items-center">
+                                <!--
+                                    Heroicon name: hashtag
+                                    
+                                    Active: "text-gray-900", Default: "text-gray-200"
+                                -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                </svg>
+                            </div>
+                            <p class="sr-only">salary</p>
+                            <p class="ml-3 text-sm font-medium text-blue-600 hover:text-orange-500">{{ job.id }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% endblock %}
+
+{% block extra_body %}
+{% endblock %}
+
+</body>
+</html>

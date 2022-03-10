@@ -72,27 +72,28 @@ class CompanyProfile(AbstractBaseUser):
 # # guardar el perfil creado por el usuario
 # post_save.connect(save_company_profile, sender=User)
 
-# # upload directory
-# # instance: usuario
-# # filename: archivo que estamos subiendo
-# def user_directory_path_logo(instance, filename):
-#     logo_picture_name = '/company/{0}/logo.jpg'.format(instance.user.username)
-#     full_path = os.path.join(settings.MEDIA_ROOT, logo_picture_name)
-#     if os.path.exists(full_path):
-#         os.remove(full_path)
-#     return logo_picture_name
+# upload directory
+# instance: usuario
+# filename: archivo que estamos subiendo
+def user_directory_path_logo(instance, filename):
+    logo_picture_name = '/offer/{0}/logo.jpg'.format(instance.user.username)
+    full_path = os.path.join(settings.MEDIA_ROOT, logo_picture_name)
+    if os.path.exists(full_path):
+        os.remove(full_path)
+    return logo_picture_name
     
 class Offer(models.Model):
-    pass
-    # title = models.CharField("Título", max_length=150)
-    # description = models.CharField("Descripción", max_length=1000)
-    # salary = models.IntegerField("Salario", default=0, blank=True)
-    # modality = models.CharField("Modalidad", choices=MODALITY_CHOICES, max_length=50)
-    # location = models.CharField("Ubicación", max_length=150)
+    title = models.CharField("Título", max_length=150)
+    logo = models.ImageField(default='offer/offer-default-logo.png', upload_to='user_directory_path_logo')
+    company = models.CharField("Compañia", max_length=150)
+    description = models.CharField("Descripción", max_length=2000)
+    salary = models.IntegerField("Salario", default=0, blank=True)
+    modality = models.CharField("Modalidad", choices=MODALITY_CHOICES, max_length=50)
+    location = models.CharField("Ubicación", max_length=150)
     # company_id = models.ForeignKey(Company, on_delete=models.CASCADE)
 
-    # def __str__(self) -> str:
-    #     return f'{self.id}: {self.title}'
+    def __str__(self) -> str:
+        return f'{self.id}: {self.title}, {self.company}'
 
 # ---- User ---
 
