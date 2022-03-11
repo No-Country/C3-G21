@@ -49,6 +49,7 @@ class UserProfileView(DetailView):
         context = {
             'user': user,
             'profile': profile,
+            'jobs': profile.job_offer_id.all(),
         }
         return render(request, 'home/userprofile_detail.html', context)
 
@@ -139,18 +140,35 @@ class OfferView(DetailView):
         return render(request, 'home/offer.html', context)
 
 def apply(request, jobid):
-    user = User
+    user = request.user
     profile = user.profile
-    print(f'Job: {user.profile.job_offer_id} ID')
     job = Offer.objects.get(pk=jobid)
-    print(job.id)
+
     profile.job_offer_id.add(job)
+    profile.save()
+
+    print(user.id)
+    print(profile.job_offer_id.all())
 
     ctx = {
         'job': job,
         'user': user
     }
     return render(request, 'home/apply.html', ctx)
+
+def job_delete(request, jobid):
+    user = request.user
+    profile = user.profile
+    job = Offer.objects.get(pk=jobid)
+
+    profile.job_offer_id.remove(job)
+
+    ctx = {
+        'job': job,
+        'user': user
+    }
+
+    return render(request, 'home/job-delete.html', ctx)
 
 def logout_view(request):
     logout(request)

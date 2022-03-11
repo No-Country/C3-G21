@@ -335,7 +335,6 @@ footer {
 }
 
 
-/* Brian Styles */
 .container {
     width: 95%;
 }
@@ -388,6 +387,8 @@ footer {
 .body p {
     font-size: 2rem;
     margin-top: 5rem;
+    margin-bottom: 7rem;
+
 }
 
 /* .form {
@@ -440,14 +441,22 @@ input[type="text"], input[type="password"], input[type="email"], input[type="che
 }
 
 .btn-secondary {
-    margin-top: 2rem;
+    margin-left: 10rem;
     border: 1px solid var(--main-color);
     border-radius: 1.6rem;
-    padding: 1rem 3rem;
+    padding: 2rem 3rem;
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
-    color: var(--main-color);
+    color: var(--background-secondary);
+    background-color: var(--main-color);
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
 }
 
 .info {
@@ -469,7 +478,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="che
     font-weight: bold;
     margin: 1rem .5rem;
     padding: 2rem 0;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
     background-color: var(--background-secondary);
     color: var(--secondary-color);
@@ -482,7 +491,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="che
 }
 
 .emp  img {
-    width: 17%;
+    width: 23%;
     height: 9rem;
     margin: 1rem .5rem;
     padding: 2rem 0;
@@ -496,6 +505,18 @@ font-size: 1.5rem;
 
 .span {
     font-weight: bold;
+}
+
+.span a {
+    margin: 1.3rem 0rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--background-black);
+}
+
+.span a:hover {
+    color: var(--secondary-color);
+    border-bottom: var(--secondary-color) solid 1px;
 }
 
 .m-a {
@@ -529,5 +550,3 @@ font-size: 1.5rem;
 .t-c {
     text-align: center;
 }
-
-/* end Brian Styles*/

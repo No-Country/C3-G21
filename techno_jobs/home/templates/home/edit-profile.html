@@ -1,89 +1,88 @@
-{% extends "home/base-profile.html" %}
+{% extends "./base-profile.html" %}
 {% load static %}
 {% load static tailwind_tags %}
-
-{% load i18n %}
-{% load account socialaccount %}
-
 {% load tailwind_filters %}
 
 {% block head_title %} Editar perfil {{ user.username }} - TechJobs {% endblock %}
 
-{% block content %}
 
-    <h1>Editar el perfil</h1>
+{% block extra_head %}
+  <!-- Tailwind -->
+    {% tailwind_css %}
+{% endblock %}
 
-<!-- tailwind -->
-<form class="form-horizontal dark:text-dark-txt" method="post"  enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <div class="space-y-1 text-center">
-              <div class="flex text-sm text-gray-600">
-                
-              </div>
-            </div>
-          </div>
-    
-          <!--Profile Picture-->
-            <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
-            <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-                Foto
-            </label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-                <div class="flex items-center">
-                <span class="mr-4 h-18 w-18 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
-                    <img src="{{user.profile.avatar.url}}" alt="avatar">
-                </span>
-                {{form.avatar}}
+{% block body %}
+
+<div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+  
+        <!-- This element is to trick the browser into centering the modal contents. -->
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+        <div class="relative inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-center">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Editar perfil de usuario</h3>
                 </div>
-            </div>
-            </div>
-            <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
-                <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-                    Subir CV
-                </label>
-                <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <div class="flex items-center">
-                    <span class="mr-4 h-18 w-18 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
-                        <img src="https://store-images.s-microsoft.com/image/apps.51661.13839582470366861.96bdfafe-61a3-4a2f-bad2-4d278a101ff2.7bd35162-fbb9-439f-9be3-db5600161a82?mode=scale&q=90&h=270&w=270&background=%2370727d" alt="avatar">
-                    </span>
-                    {{form.cv}}
-                    </div>
-                </div>
-            </div>
-    
-            <div class="mt-4">    
-                <label for="bio" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-                    Bio
-                </label>
-                <div class="max-w-lg block w-full shadow-sm dark:bg-dark-third dark:text-dark-txt dark:border-dark-third focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                    {{form.bio}}
-                </div>
-    
-                <label for="city" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-                Ubicación: Ciudad, País
-                </label>
-                <div class="max-w-lg block w-full shadow-sm dark:bg-dark-third dark:text-dark-txt dark:border-dark-third focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                    {{form.location}}
-                </div>
-    
-                <label for="url" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
-                Web
-                </label>
-                {{form.url}}
-            </div>
-    
-             <div class="control-group">
-                <div class="controls">
-                <a href="{% url 'home:user-profile' user.id %}" class="mt-5 w-full bg-blue-400 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                Volver al perfil </a>
-                <button type="submit" class="mt-5 w-full bg-blue-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-                Actualizar</button>
+
+                <!-- tailwind -->
+                <form class="form-horizontal dark:text-dark-txt" method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}                        
+                        <div class="mt-4">    
+                            <label for="bio" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                            Bio
+                            </label>
+                            {{form.bio}}
+                            
+                            <label for="city" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                            Ubicación: Ciudad, País
+                            </label>
+                            {{form.location}}
+                            
+                            <label for="url" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                            Web
+                            </label>
+                            {{form.url}}
+                        </div>
+
+                        <!--Profile Picture-->
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
+                            <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                Foto
+                            </label>
+                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                <div class="flex items-center">
+                                    {{form.avatar}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Curriculum -->
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
+                            <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                Subir CV
+                            </label>
+                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                <div class="flex items-center">
+                                    <span class="mr-4 h-18 w-18 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
+                                        <img src="https://store-images.s-microsoft.com/image/apps.51661.13839582470366861.96bdfafe-61a3-4a2f-bad2-4d278a101ff2.7bd35162-fbb9-439f-9be3-db5600161a82?mode=scale&q=90&h=270&w=270&background=%2370727d" alt="avatar">
+                                    </span>
+                                    {{form.cv}}
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+                            <a href="{% url 'home:user-profile' user.id %}" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Volver al perfil</a>
+                            <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">Actualizar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
-
-
+    </div>
+</div>
 
 {% endblock %}

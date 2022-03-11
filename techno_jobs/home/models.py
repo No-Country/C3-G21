@@ -126,7 +126,8 @@ class UserProfile(models.Model):
     url = models.CharField(max_length=100, null=True, blank=True)
     location = models.CharField(max_length=50, null=True, blank=True)
     cv = models.FileField(blank=True, upload_to='user_directory_path_profile_cv')
-    job_offer_id = models.ManyToManyField(Offer)
+    job_offer_id = models.ManyToManyField(Offer, blank=True)
+    # offer_id = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.user.username

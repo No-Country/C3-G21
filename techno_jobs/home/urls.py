@@ -24,6 +24,7 @@ urlpatterns = [
     path('jobs/', views.JobsView.as_view(), name='jobs'),
     path('job/<pk>', views.OfferView.as_view(), name='job-view'),
     path('apply/<int:jobid>', views.apply, name='job-apply'),
+    path('delete-job/<int:jobid>', views.job_delete, name='job-delete'),
 
     path('logout/', views.logout_view, name='logout'),
 ]
